@@ -48,3 +48,9 @@
     min-width: 170px;
   }
 }
+
+@media (max-width: 48em) {
+    .logo {
+        display: none
+    }
+}

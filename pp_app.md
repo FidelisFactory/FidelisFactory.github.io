@@ -6,8 +6,7 @@ title: PlusPoints Notenrechner
 
 ## [FAQ](#faq) ##
 
-<details>
-    <summary>Was bedeutet „Gewichtung“?</summary>
+### Was bedeutet „Gewichtung“?
     
 ![Gewichtung im App](/img/gewichtung_1.png)
     
@@ -34,5 +33,3 @@ Im App kannst du die Gewichtung jeweils in den Details zu Fächern und Prüfunge
 
 Die Gewichtung kann jeweils als ganze Zahl (z.B. 2), Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder als Prozentsatz (50%) angegeben werden.
     
-</details>
-

@@ -30,3 +30,6 @@ das andere Personen benutzen treibt uns an. Falls du mit uns darüber sprechen w
     instagram="https://www.instagram.com/__fechu__/"
     %}
 
+## Kontakt
+
+Du hast Fragen oder Anregungen? Melde dich bei uns via <a href="mailto:info@fidelisfactory.ch">info@fidelisfactory.ch</a>

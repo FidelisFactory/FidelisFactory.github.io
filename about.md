@@ -25,7 +25,7 @@ das andere Personen benutzen treibt uns an. Falls du mit uns darüber sprechen w
     %}
 {% include person_highlight.html 
     name="Sandro Meier" 
-    description="Software Engineer @ Google mit flair für Robotik, Musiker und Aviatik"
+    description="Software Engineer @ Google mit flair für Robotik, Musik und Aviatik"
     picture="/public/img/Sandro.jpg"
     linkedin="https://www.linkedin.com/in/sandro-meier-76a665127"
     instagram="https://www.instagram.com/__fechu__/"

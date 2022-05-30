@@ -7,7 +7,6 @@ baseurl:             ''
 paginate:            5
 permalink:           pretty
 markdown:            kramdown
-exclude:             [pluspoints]
 
 # About/contact
 author:

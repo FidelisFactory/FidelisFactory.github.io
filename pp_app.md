@@ -1,6 +1,7 @@
 ---
 layout: page
 title: PlusPoints Notenrechner
+order: 20
 ---
 
 ## Schulnoten: einfach, schnell und übersichtlich

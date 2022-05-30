@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Über uns
+order: 10
 ---
 
 In unserer Freizeit arbeiten wir an Apps wie PlusPoints und Jasstafel weil es Spass macht. Die Freude etwas zu kreieren 

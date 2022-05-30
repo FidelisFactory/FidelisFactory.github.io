@@ -1,6 +1,7 @@
 ---
 layout: page
 title: PlusPoints FAQ
+order: 21
 ---
 
 ### Was bedeutet „Gewichtung“?

@@ -2,7 +2,7 @@
 title:               FidelisFactory
 tagline:             'Simple digitale Lösungen, um den Alltag zu erleichtern'
 description:         'Interesse unsere Apps zu verbessern? Melde dich bei uns via info@fidelisfactory.ch'
-url:                 https://fidelisfactory.github.io
+url:                 https://fidelisfactory.ch
 baseurl:             ''
 paginate:            5
 permalink:           pretty
@@ -12,7 +12,7 @@ exclude:             ['pluspoints/messages/README.md']
 # About/contact
 author:
   name:              FidelisFactory
-  url:               https://github.com/fidelisFactory
+  url:               https://github.com/FidelisFactory
 
 # Gems
 plugins:

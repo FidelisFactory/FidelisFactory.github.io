@@ -1,6 +1,6 @@
 ---
 layout: page
-title: PlusPoints FAQ
+title: PlusPoints Notenrechner - FAQ
 order: 21
 ---
 

@@ -1,3 +1,9 @@
+---
+layout: page
+title: Privacy Policy
+order: 100
+---
+
 **PRIVACY POLICY**
 
   

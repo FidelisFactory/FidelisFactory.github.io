@@ -176,7 +176,4 @@ Any dispute, controversy or claim arising out of or relating to this EULA or the
 
 IF YOU HAVE ANY QUESTIONS CONCERNING THIS AGREEMENT, YOU MAY CONTACT info -at- fidelisfactory.com.
 
-{% include privacy_policy.html %}
-
-
 

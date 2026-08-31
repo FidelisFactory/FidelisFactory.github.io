@@ -6,77 +6,84 @@ order: 100
 
 **PRIVACY POLICY**
 
-  
 
-**Last updated January 26, 2024**
 
-  
+**Last updated August 31, 2026**
 
-  
 
-  
 
-This privacy notice for FidelisFactory ("**we**," "**us**," or "**our**"), describes how and why we might collect, store, use, and/or share ("**process**") your information when you use our services ("**Services**"), such as when you:
 
-*   Download and use our mobile application (PlusPoints), or any other application of ours that links to this privacy notice
 
-*   Engage with us in other related ways, including any sales, marketing, or events
 
-**Questions or concerns?** Reading this privacy notice will help you understand your privacy rights and choices. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at info@fidelisfactory.ch.
+This privacy notice explains how we — the individual developers of the **PlusPoints** app (published under the project name **FidelisFactory**) — collect, store, use, and share ("**process**") your information. In this notice, "**we**," "**us**," and "**our**" refer to the developers who work on the iOS and Android app. "FidelisFactory" is only a project name; there is no company behind it.
 
-  
+This notice applies when you:
 
-  
+*   Download and use the **PlusPoints** app on Android or iOS, or any other app of ours that links to this notice;
+
+*   Contact us for support, or send us feedback or a bug report;
+
+*   Interact with us in other related ways in connection with the app.
+
+**Questions or concerns?** Reading this notice will help you understand your privacy rights and choices. If you do not agree with it, please do not use the app. If you have questions, contact us at info@fidelisfactory.ch.
+
+
+
+
 
 **SUMMARY OF KEY POINTS**
 
-  
 
-**_This summary provides key points from our privacy notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our_** [**_table of contents_**](#toc) **_below to find the section you are looking for._**
 
-  
+**_This summary gives the key points. Use the_** [**_table of contents_**](#toc) **_below for the full detail on any topic._**
 
-**What personal information do we process?** When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use. Learn more about [personal information you disclose to us](#personalinfo).
 
-  
 
-**Do we process any sensitive personal information?** We do not process sensitive personal information.
+**What personal information do we process?** PlusPoints has no account. The grades, exams, subjects, semesters, and settings you enter are stored **only on your device** and are not sent to us. When you use the app, technical and usage information — your device's advertising identifier, device and app characteristics, in-app events, coarse location from your IP address, and crash diagnostics — is processed mainly through Google (Firebase and AdMob) and, for purchases, through Google or Apple. If you contact us, we process your message and the contact details you use. Learn more about [information we collect](#infocollect).
 
-  
 
-**Do we receive any information from third parties?** We do not receive any information from third parties.
 
-  
+**Do we process any sensitive personal information?** No. Your grades are personal to you, but they stay on your device and are not transmitted to us.
 
-**How do we process your information?** We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent. We process your information only when we have a valid legal reason to do so. Learn more about [how we process your information](#infouse).
 
-  
 
-**In what situations and with which parties do we share personal information?** We may share information in specific situations and with specific third parties. Learn more about [when and with whom we share your personal information](#whoshare).
+**Do we receive information from third parties?** No. We do not obtain information about you from data brokers or other third parties.
 
-  
 
-**How do we keep your information safe?** We have organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Learn more about [how we keep your information safe](#infosafe).
 
-  
+**Do we show advertising?** Yes — Google AdMob, to users who have not bought the ad-free upgrade. Where consent is legally required, you control advertising and analytics through an in-app consent form (and, on iOS, Apple's App Tracking Transparency prompt), and you can turn off ad personalization or remove ads entirely. Learn more about [advertising, analytics, and crash reporting](#adsanalytics).
 
-**What are your rights?** Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information. Learn more about [your privacy rights](#privacyrights).
 
-  
 
-**How do you exercise your rights?** The easiest way to exercise your rights is by visiting info@fidelisfactory.ch, or by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.
+**How do we process your information?** To provide and operate the app, to show advertising, to understand and improve how the app is used, to receive and fix crash reports, to answer your requests, and to comply with law — only where we have a valid legal basis. Learn more about [how we process your information](#infouse).
 
-  
 
-Want to learn more about what we do with any information we collect? [Review the privacy notice in full](#toc).
 
-  
+**With whom do we share personal information?** Mainly Google (advertising, analytics, crash reporting) and Google or Apple (payments), plus the limited legal situations described below. We do not sell your personal information for money. Learn more about [when and with whom we share your information](#whoshare).
 
-  
+
+
+**How do we keep your information safe?** With reasonable organizational and technical measures. No method of transmission or storage is 100% secure, so we cannot guarantee absolute security. Learn more about [how we keep your information safe](#infosafe).
+
+
+
+**What are your rights?** Depending on where you live, you may have rights to access, correct, delete, restrict, port, or object to the processing of your personal information, and to withdraw consent. Learn more about [your privacy rights](#privacyrights).
+
+
+
+**How do you exercise your rights?** Contact us at info@fidelisfactory.ch. In the EEA, the UK, and Switzerland you can also change your advertising and analytics consent at any time in the app under **Settings → Change Privacy Settings**, and turn off crash reporting under **Settings → Send crash reports**.
+
+
+
+Want the full detail? [Review the notice in full](#toc).
+
+
+
+
 
 <a name="toc"></a>**TABLE OF CONTENTS**
 
-  
+
 
 [1\. WHAT INFORMATION DO WE COLLECT?](#infocollect)
 
@@ -86,296 +93,395 @@ Want to learn more about what we do with any information we collect? [Review th
 
 [4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)
 
-[5\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?](#3pwebsites)
+[5\. HOW DO WE HANDLE YOUR GRADES AND OTHER APP DATA?](#appdata)
 
-[6\. HOW LONG DO WE KEEP YOUR INFORMATION?](#inforetain)
+[6\. ADVERTISING, ANALYTICS, AND CRASH REPORTING](#adsanalytics)
 
-[7\. HOW DO WE KEEP YOUR INFORMATION SAFE?](#infosafe)
+[7\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?](#3pwebsites)
 
-[8\. WHAT ARE YOUR PRIVACY RIGHTS?](#privacyrights)
+[8\. HOW LONG DO WE KEEP YOUR INFORMATION?](#inforetain)
 
-[9\. CONTROLS FOR DO-NOT-TRACK FEATURES](#DNT)
+[9\. HOW DO WE KEEP YOUR INFORMATION SAFE?](#infosafe)
 
-[10\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)
+[10\. DO WE COLLECT INFORMATION FROM MINORS?](#minors)
 
-[11\. DO WE MAKE UPDATES TO THIS NOTICE?](#policyupdates)
+[11\. WHAT ARE YOUR PRIVACY RIGHTS?](#privacyrights)
 
-[12\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)
+[12\. CONTROLS FOR DO-NOT-TRACK FEATURES](#DNT)
 
-[13\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?](#request)
+[13\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?](#uslaws)
 
-  
+[14\. DO WE MAKE UPDATES TO THIS NOTICE?](#policyupdates)
 
-  
+[15\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)
 
-**1\. WHAT INFORMATION DO WE COLLECT?**
+[16\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?](#request)
 
-  
 
-**Personal information you disclose to us**
 
-  
 
-**_In Short:_** _We collect personal information that you provide to us._
 
-  
+<a name="infocollect"></a>**1\. WHAT INFORMATION DO WE COLLECT?**
 
-We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.
 
-  
 
-**Sensitive Information.** We do not process sensitive information.
+**Information you enter into the app**
 
-  
 
-**Payment Data.** We may collect data necessary to process your payment if you make purchases, such as your payment instrument number, and the security code associated with your payment instrument. All payment data is stored by Google Payments. You may find their privacy notice link(s) here: [https://payments.google.com/payments/apis-secure/get\_legal\_document?ldo=0&ldt=privacynotice&ldl=en-GB#:~:text=If%20you%20do%20not%20want](https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice&ldl=en-GB#:~:text=If%20you%20do%20not%20want),inform%20a%20third%2Dparty%20merchant.
 
-  
+**_In Short:_** _The grades and settings you enter stay on your device and are not sent to us._
 
-**Application Data.** If you use our application(s), we also may collect the following information if you choose to provide us with access or permission:
 
-*   _Mobile Device Access._ We may request access or permission to certain features from your mobile device, including your mobile device's internet, storage, and other features. If you wish to change our access or permissions, you may do so in your device's settings.
 
-*   _Mobile Device Data._ We automatically collect device information (such as your mobile device ID, model, and manufacturer), operating system, version information and system configuration information, device and application identification numbers, browser type and version, hardware model Internet service provider and/or mobile carrier, and Internet Protocol (IP) address (or proxy server). If you are using our application(s), we may also collect information about the phone network associated with your mobile device, your mobile device’s operating system or platform, the type of mobile device you use, your mobile device’s unique device ID, and information about the features of our application(s) you accessed.
+PlusPoints has no user accounts. The grades, exams, subjects, semesters, grade-color preferences, and other settings you enter are stored **locally on your device** (in the app's database and preferences). We do not receive this information. It is included in a system backup only if you have that enabled on your device — on Android, Google account backup or device-to-device transfer; on iOS, iCloud Backup or a direct device-to-device transfer — in which case it is stored in your own Google or Apple account, not by us. See [Section 5](#appdata).
 
-This information is primarily needed to maintain the security and operation of our application(s), for troubleshooting, and for our internal analytics and reporting purposes.
 
-  
 
-All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.
+**Information you provide when you contact us**
 
-  
 
-**Information automatically collected**
 
-  
+If you use the in-app "Report a problem," "Make a suggestion," or "Contact us" options, your device's email app opens with a message addressed to support@fidelisfactory.ch. The message is pre-filled with basic technical details (app version, operating-system version, device model, and a random bug reference) to help us diagnose issues. You choose whether to send it and what else to include. If you send it, we process the content of your message and your email address in order to respond.
 
-**_In Short:_** _Some information — such as your Internet Protocol (IP) address and/or browser and device characteristics — is collected automatically when you visit our Services._
 
-  
 
-We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity (like your name or contact information) but may include device and usage information, such as your IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services, and other technical information. This information is primarily needed to maintain the security and operation of our Services, and for our internal analytics and reporting purposes.
+**Payment data.** If you buy the one-time "remove ads" upgrade on Android, the purchase is processed by **Google Play**. We receive only confirmation that the purchase was made. All card and payment details are stored and handled entirely by Google and are never seen or stored by us. See Google's [payments privacy notice](https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice&ldl=en-GB).
 
-  
 
-The information we collect includes:
 
-*   _Log and Usage Data._ Log and usage data is service-related, diagnostic, usage, and performance information our servers automatically collect when you access or use our Services and which we record in log files. Depending on how you interact with us, this log data may include your IP address, device information, browser type, and settings and information about your activity in the Services (such as the date/time stamps associated with your usage, pages and files viewed, searches, and other actions you take such as which features you use), device event information (such as system activity, error reports (sometimes called "crash dumps"), and hardware settings).
+**Information collected automatically**
 
-*   _Device Data._ We collect device data such as information about your computer, phone, tablet, or other device you use to access the Services. Depending on the device used, this device data may include information such as your IP address (or proxy server), device and application identification numbers, location, browser type, hardware model, Internet service provider and/or mobile carrier, operating system, and system configuration information.
 
-**2\. HOW DO WE PROCESS YOUR INFORMATION?**
 
-  
+**_In Short:_** _Some information — such as your IP address and device characteristics — is collected automatically when you use the app, primarily by Google._
 
-**_In Short:_** _We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law. We may also process your information for other purposes with your consent._
 
-  
 
-**We process your personal information for a variety of reasons, depending on how you interact with our Services, including:**
+When you use the app, the following is collected automatically, primarily by Google services integrated into the app:
 
-*   **To deliver and facilitate delivery of services to the user.** We may process your information to provide you with the requested service.
+*   _Advertising identifier._ On Android, the Advertising ID; on iOS, the Identifier for Advertisers (IDFA). This is a resettable identifier used to select and measure advertising. On iOS, the app can only access the IDFA if you allow it through Apple's App Tracking Transparency prompt (see [Section 6](#adsanalytics)); if you do not, no IDFA is available and you receive non-personalized ads.
 
-*   **To request feedback.** We may process your information when necessary to request feedback and to contact you about your use of our Services.
+*   _Device and technical data._ Device model, manufacturer, operating-system version, language and region, screen characteristics, mobile network / carrier information, coarse (approximate) location derived from your IP address, and IP address.
 
-*   **To deliver targeted advertising to you.** We may process your information to develop and display personalized content and advertising tailored to your interests, location, and more.
+*   _App-activity data._ Aggregated, non-identifying information about how you use the app — for example which screens and features you open and how often — collected through Google Analytics for Firebase.
 
-*   **To protect our Services.** We may process your information as part of our efforts to keep our Services safe and secure, including fraud monitoring and prevention.
+*   _Crash and diagnostic data._ Automatic crash reports, including the state of your device and a stack trace at the moment of a crash, collected through Firebase Crashlytics.
 
-*   **To identify usage trends.** We may process information about how you use our Services to better understand how they are being used so we can improve them.
+We do not collect your name, postal address, phone number, precise GPS location, contacts, photos, or files, and we do not track you across other companies' apps or websites beyond what is described in [Section 6](#adsanalytics).
 
-*   **To determine the effectiveness of our marketing and promotional campaigns.** We may process your information to better understand how to provide marketing and promotional campaigns that are most relevant to you.
 
-*   **To save or protect an individual's vital interest.** We may process your information when necessary to save or protect an individual’s vital interest, such as to prevent harm.
 
-  
+**Do you have to provide this information?** You do not need to provide any personal information to use the core features of the app (entering grades and calculating averages). If you decline advertising and analytics consent where it is requested, you will see non-personalized ads and analytics data will not be collected with a persistent identifier.
 
-**3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?**
 
-  
 
-_**In Short:** We only process your personal information when we believe it is necessary and we have a valid legal reason (i.e., legal basis) to do so under applicable law, like with your consent, to comply with laws, to provide you with services to enter into or fulfill our contractual obligations, to protect your rights, or to fulfill our legitimate business interests._
+<a name="infouse"></a>**2\. HOW DO WE PROCESS YOUR INFORMATION?**
 
-  
 
-_**If you are located in the EU or UK, this section applies to you.**_
 
-  
+**_In Short:_** _To operate and improve the app, to show advertising, to fix crashes, to answer your requests, and to comply with law._
 
-The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information. As such, we may rely on the following legal bases to process your personal information:
 
-*   **Consent.** We may process your information if you have given us permission (i.e., consent) to use your personal information for a specific purpose. You can withdraw your consent at any time. Learn more about [withdrawing your consent](#withdrawconsent).
 
-*   **Performance of a Contract.** We may process your personal information when we believe it is necessary to fulfill our contractual obligations to you, including providing our Services or at your request prior to entering into a contract with you.
+**We process your personal information for the following purposes:**
 
-*   **Legitimate Interests.** We may process your information when we believe it is reasonably necessary to achieve our legitimate business interests and those interests do not outweigh your interests and fundamental rights and freedoms. For example, we may process your personal information for some of the purposes described in order to:
+*   **To provide and operate the app,** including calculating your averages and running the features you use.
 
-*   Develop and display personalized and relevant advertising content for our users
+*   **To show advertising** to users who have not purchased the ad-free upgrade, and, where you have consented, to personalize that advertising.
 
-*   Analyze how our Services are used so we can improve them to engage and retain users
+*   **To understand and improve the app** by analyzing aggregated usage trends.
 
-*   Support our marketing activities
+*   **To detect, diagnose, and fix crashes and technical problems.**
 
-*   Diagnose problems and/or prevent fraudulent activities
+*   **To process your one-time in-app purchase** and recognize it on your device.
 
-*   Understand how our users use our products and services so we can improve user experience
+*   **To respond to your support requests, feedback, and bug reports.**
 
-*   **Legal Obligations.** We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.  
-    
+*   **To protect the app,** including preventing fraud and abuse.
 
-*   **Vital Interests.** We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.
+*   **To comply with legal obligations** and enforce the app's terms.
 
-In legal terms, we are generally the "data controller" under European data protection laws of the personal information described in this privacy notice, since we determine the means and/or purposes of the data processing we perform. This privacy notice does not apply to the personal information we process as a "data processor" on behalf of our customers. In those situations, the customer that we provide services to and with whom we have entered into a data processing agreement is the "data controller" responsible for your personal information, and we merely process your information on their behalf in accordance with your instructions. If you want to know more about our customers' privacy practices, you should read their privacy policies and direct any questions you have to them.
+We do not use your information for automated decision-making that produces legal or similarly significant effects. Where you have consented to personalized advertising, Google and its partners carry out profiling to predict which ads are relevant to you (see [Section 6](#adsanalytics)); this does not produce legal or similarly significant effects.
 
-  
+
+
+<a name="legalbases"></a>**3\. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?**
+
+
+
+_**In Short:** We only process your personal information where we have a valid legal basis. For advertising and analytics that read or write information on your device, that basis is your consent._
+
+
+
+_**If you are located in the EU or the UK, this section applies to you.**_
+
+
+
+Under the GDPR and UK GDPR we rely on the following legal bases:
+
+*   **Consent — Art. 6(1)(a) GDPR, and Art. 5(3) of the ePrivacy Directive.** Reading information from, or storing information on, your device for advertising and analytics — including the advertising identifier and similar device signals — is not strictly necessary to provide the app, so we rely on your consent for it. This covers both personalized and non-personalized ad serving and the collection of analytics data with an identifier. You give or refuse this consent through the in-app consent form (Google's User Messaging Platform), and you can change it at any time under **Settings → Change Privacy Settings**. On iOS you will also see Apple's App Tracking Transparency prompt (see [Section 6](#adsanalytics)). You can [withdraw consent](#withdrawconsent) at any time; withdrawal does not affect processing already carried out.
+
+*   **Legitimate interests — Art. 6(1)(f) GDPR.** We rely on our legitimate interest in the security, stability, and integrity of the app to process crash and diagnostic data through Firebase Crashlytics, and to prevent fraud and abuse. This data is minimal, is not used for advertising, and you can object to it at any time (see [Section 11](#privacyrights)) or switch it off entirely under **Settings → Send crash reports**.
+
+*   **Performance of a contract — Art. 6(1)(b) GDPR.** We process your in-app purchase information to deliver the ad-free upgrade you asked for.
+
+*   **Legal obligation — Art. 6(1)(c) GDPR.** We process information where necessary to comply with the law, or to establish, exercise, or defend legal claims.
+
+We are the "data controller" of the personal information described in this notice under EU and UK data-protection law, because we determine the purposes and means of the processing.
+
+**Data Protection Officer.** We have not appointed a Data Protection Officer. The processing described here does not meet the threshold in Art. 37 GDPR — it does not involve large-scale systematic monitoring of individuals or large-scale processing of special-category data.
+
+
+
+**_If you are located in Switzerland, this section applies to you._**
+
+
+
+The revised Federal Act on Data Protection (nFADP / revDSG) applies. We process your information in good faith, for the proportionate purposes described in this notice, and with the transparency this notice provides. Where processing requires your consent under Swiss law, we obtain it as described above. You may object to our processing of your personal data, and you may contact the Federal Data Protection and Information Commissioner (see [Section 11](#privacyrights)).
+
+
 
 **_If you are located in Canada, this section applies to you._**
 
-  
 
-We may process your information if you have given us specific permission (i.e., express consent) to use your personal information for a specific purpose, or in situations where your permission can be inferred (i.e., implied consent). You can [withdraw your consent](#withdrawconsent) at any time.
 
-  
+We may process your information where you have given express consent for a specific purpose, or where consent can reasonably be inferred (implied consent). You can [withdraw your consent](#withdrawconsent) at any time. In limited exceptional cases, applicable law may permit processing without consent — for example where collection is clearly in your interest and consent cannot be obtained in time, for fraud detection and prevention, in the context of certain business transactions, where required by a subpoena or court order, or where the information is publicly available and specified by regulation.
 
-In some exceptional cases, we may be legally permitted under applicable law to process your information without your consent, including, for example:
 
-*   If collection is clearly in the interests of an individual and consent cannot be obtained in a timely way
 
-*   For investigations and fraud detection and prevention
+<a name="whoshare"></a>**4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?**
 
-*   For business transactions provided certain conditions are met
 
-*   If it is contained in a witness statement and the collection is necessary to assess, process, or settle an insurance claim
 
-*   For identifying injured, ill, or deceased persons and communicating with next of kin
+**_In Short:_** _With Google (advertising, analytics, crash reporting), with Google or Apple (payments), and in the limited legal situations below._
 
-*   If we have reasonable grounds to believe an individual has been, is, or may be victim of financial abuse
 
-*   If it is reasonable to expect collection and use with consent would compromise the availability or the accuracy of the information and the collection is reasonable for purposes related to investigating a breach of an agreement or a contravention of the laws of Canada or a province
 
-*   If disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records
+We share information only in the following situations:
 
-*   If it was produced by an individual in the course of their employment, business, or profession and the collection is consistent with the purposes for which the information was produced
+*   **Google — analytics and crash reporting.** For **Google Analytics for Firebase** and **Firebase Crashlytics**, Google acts as our **processor**: it processes the data only on our documented instructions, under the Firebase Data Processing and Security Terms.
 
-*   If the collection is solely for journalistic, artistic, or literary purposes
+*   **Google — advertising (AdMob).** For **Google AdMob**, Google acts as an **independent controller** of the data it collects and uses for its own ad-delivery, measurement, fraud-prevention, and reporting purposes, under Google's Ads Controller-Controller Data Protection Terms. For **personalized** advertising, we and Google may be **joint controllers within the meaning of Art. 26 GDPR** in respect of the collection of data on your device and its transmission to Google; Google is then responsible for what it does with that data. Google publishes its controller terms and a description of the arrangement, and explains its practices at [How Google uses information from sites or apps that use its services](https://policies.google.com/technologies/partner-sites) and in the [Google Privacy Policy](https://policies.google.com/privacy).
 
-*   If the information is publicly available and is specified by the regulations
+*   **Payments.** In-app purchases are processed by **Google** (Google Play, on Android) or **Apple** (the App Store, on iOS), each acting as an independent controller for payment processing. We receive only confirmation that a purchase was made.
 
-  
+*   **Legal and safety.** We may disclose information where required by law, to respond to lawful requests from public authorities, to enforce the app's terms, or to protect the rights, property, or safety of the PlusPoints project, its users, or others.
 
-**4\. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?**
+*   **Transfer of the project.** If we transfer or sell the PlusPoints app or the FidelisFactory project to another developer or company, your information may be transferred as part of that transaction. The recipient would be bound by this notice or would give you notice of any changes.
 
-  
+We do not sell your personal information for money. Sharing your advertising identifier with Google for personalized advertising may count as "sharing" or a "sale" under some U.S. state laws; you can opt out using the in-app consent controls or your device's advertising or tracking settings (see Sections [6](#adsanalytics), [12](#DNT), and [13](#uslaws)).
 
-**_In Short:_** _We may share information in specific situations described in this section and/or with the following third parties._
 
-  
 
-We may need to share your personal information in the following situations:
+**International data transfers.** We are located in Switzerland. Google and Apple operate in the United States and other countries, so the information collected through their services may be transferred to and processed there and in other countries where they or their sub-processors operate. Where this involves a transfer of personal data of individuals in the EEA, the UK, or Switzerland to a country not recognized as providing an adequate level of protection, the transfer is made under appropriate safeguards — primarily Google's and Apple's certification under the **EU–U.S. Data Privacy Framework** and its UK and Swiss extensions, with the **European Commission's Standard Contractual Clauses** as the fallback where the Framework does not apply. You may request more information about these safeguards, or a copy of them, by contacting us at info@fidelisfactory.ch.
 
-*   **Business Transfers.** We may share or transfer your information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.
 
-*   **When we use Google Analytics.** We may share your information with Google Analytics to track and analyze the use of the Services. To opt out of being tracked by Google Analytics across the Services, visit [https://tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout). For more information on the privacy practices of Google, please visit the [Google Privacy & Terms page](https://policies.google.com/privacy).
 
-  
+<a name="appdata"></a>**5\. HOW DO WE HANDLE YOUR GRADES AND OTHER APP DATA?**
 
-**5\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?**
 
-  
 
-**_In Short:_** _We are not responsible for the safety of any information that you share with third parties that we may link to or who advertise on our Services, but are not affiliated with, our Services._
+**_In Short:_** _The grades and settings you enter are stored only on your device and are not transmitted to us._
 
-  
 
-The Services may link to third-party websites, online services, or mobile applications and/or contain advertisements from third parties that are not affiliated with us and which may link to other websites, services, or applications. Accordingly, we do not make any guarantee regarding any such third parties, and we will not be liable for any loss or damage caused by the use of such third-party websites, services, or applications. The inclusion of a link towards a third-party website, service, or application does not imply an endorsement by us. We cannot guarantee the safety and privacy of data you provide to any third parties. Any data collected by third parties is not covered by this privacy notice. We are not responsible for the content or privacy and security practices and policies of any third parties, including other websites, services, or applications that may be linked to or from the Services. You should review the policies of such third parties and contact them directly to respond to your questions.
 
-  
+The grades, exams, subjects, semesters, and settings you enter are stored **only on your device**, in the app's local database and preferences. This data is:
 
-**6\. HOW LONG DO WE KEEP YOUR INFORMATION?**
+*   **Not transmitted to us or to any third party** as part of normal use of the app.
 
-  
+*   **Processed on your device** by the app's calculation engine.
 
-**_In Short:_** _We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law._
+*   **Included in a file you create** only when you use the app's "Export" feature. That file is stored wherever you choose to save or share it, and its contents are then subject to the privacy practices of whatever service or app you send it to. The "Import" feature reads such a file back into the app on your device.
 
-  
+*   **Backed up to your own account** only if you have Android backup / device transfer, or iCloud Backup, enabled on your device — in which case it is stored in your Google or Apple account, controlled by you, not by us.
 
-We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements). No purpose in this notice will require us keeping your personal information for longer than until revoked by the user.
+To delete this data, delete your semesters and subjects in the app, or uninstall the app (which removes the local database), and disable or clear the app's backup in your device settings.
 
-  
 
-When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.
 
-  
+<a name="adsanalytics"></a>**6\. ADVERTISING, ANALYTICS, AND CRASH REPORTING**
 
-**7\. HOW DO WE KEEP YOUR INFORMATION SAFE?**
 
-  
 
-**_In Short:_** _We aim to protect your personal information through a system of organizational and technical security measures._
+**_In Short:_** _We use Google AdMob to show ads and Google Firebase to measure and improve the app. Where consent is legally required, you control this through an in-app consent form; on iOS you also control tracking through Apple's App Tracking Transparency._
 
-  
 
-We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.
 
-  
+**Advertising (Google AdMob)**
 
-**8\. WHAT ARE YOUR PRIVACY RIGHTS?**
 
-  
 
-**_In Short:_** _In some regions, such as the European Economic Area (EEA), United Kingdom (UK), Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information. You may review, change, or terminate your account at any time._
+The app displays advertising provided by Google AdMob. To select, deliver, and measure ads, AdMob and its partners may access and process your device's advertising identifier (Android Advertising ID or iOS IDFA), your IP address, approximate (coarse) location, and information about how you interact with ads. Where you have consented, the ads may be personalized; otherwise you see non-personalized (contextual) ads. Personalized advertising involves profiling by Google and its partners to predict which ads are relevant to you; this does not produce legal or similarly significant effects, and you can opt out at any time using the choices below.
 
-  
 
-In some regions (like the EEA, UK, Switzerland, and Canada), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; (iv) if applicable, to data portability; and (v) not to be subject to automated decision-making. In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section "[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)" below.
 
-  
+**iOS App Tracking Transparency.** On iOS, before ads can be personalized the app shows Apple's App Tracking Transparency prompt, asking whether the app may access the IDFA and "track" you across other apps and websites. This is Apple's requirement and is separate from the GDPR consent form, though the two work together — in the EEA, the UK, and Switzerland you may see both. If you deny the prompt (or have "Allow Apps to Request to Track" turned off system-wide), no IDFA is available to the app and you receive non-personalized ads.
 
-We will consider and act upon any request in accordance with applicable data protection laws.
 
-If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your [Member State data protection authority](https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm) or [UK data protection authority](https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/).
 
-  
+**Your choices:**
 
-If you are located in Switzerland, you may contact the [Federal Data Protection and Information Commissioner](https://www.edoeb.admin.ch/edoeb/en/home.html).
+*   **In the app.** If you are in the EEA, the UK, or Switzerland, the app shows a consent form the first time you use it. You can review, change, or withdraw your choices at any time under **Settings → Change Privacy Settings**.
 
-  
+*   **On your device — Android.** Reset or delete your Advertising ID, or turn off ad personalization, under _Settings → Privacy → Ads_ (or _Settings → Google → Ads_).
 
-**Withdrawing your consent:** If we are relying on your consent to process your personal information, which may be express and/or implied consent depending on the applicable law, you have the right to withdraw your consent at any time. You can withdraw your consent at any time by contacting us by using the contact details provided in the section "[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)" below.
+*   **On your device — iOS.** Control whether apps may track you under _Settings → Privacy & Security → Tracking_: turn off the switch for PlusPoints, or turn off "Allow Apps to Request to Track" to deny all apps. With tracking denied, no IDFA is available to the app and you receive non-personalized ads.
 
-  
+*   **Remove ads entirely.** Make the one-time in-app purchase that removes all advertising from the app.
 
-However, please note that this will not affect the lawfulness of the processing before its withdrawal nor, when applicable law allows, will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.
 
-  
 
-If you have questions or comments about your privacy rights, you may email us at info@fidelisfactory.ch.
+**Analytics and crash reporting (Google Firebase)**
 
-  
 
-**9\. CONTROLS FOR DO-NOT-TRACK FEATURES**
 
-  
+We use Google Analytics for Firebase to collect aggregated, non-identifying usage statistics so we can understand and improve the app — including which features are used and whether crash reporting is switched on or off — and Firebase Crashlytics to receive automatic crash reports, including diagnostic information about your device's state at the moment of a crash, so we can fix problems.
 
-Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this privacy notice.
 
-  
 
-**10\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?**
+For users in the EEA, the UK, and Switzerland, whether analytics data is collected together with a persistent identifier depends on the choice you make in the in-app consent form; if you decline, it is collected only in a limited, non-identifying form or not at all. Crash reporting is carried out on the basis of our legitimate interest in the security and stability of the app, and you can turn it off at any time using the **Send crash reports** switch under **Settings**.
 
-  
 
-**_In Short:_** _If you are a resident of California, Colorado, Connecticut, Utah or Virginia, you are granted specific rights regarding access to your personal information._
 
-  
+How long this data is kept is set out in [Section 8](#inforetain).
+
+
+
+<a name="3pwebsites"></a>**7\. WHAT IS OUR STANCE ON THIRD-PARTY WEBSITES?**
+
+
+
+**_In Short:_** _We are not responsible for the safety of information you share with third parties that we link to or that advertise in the app but that are not affiliated with us._
+
+
+
+The app may link to third-party websites, online services, or applications, and may contain advertisements from third parties that are not affiliated with us and that may link elsewhere. We make no guarantee regarding any such third parties and will not be liable for any loss or damage caused by using them. Including a link does not imply endorsement. We cannot guarantee the safety and privacy of data you provide to third parties; any data they collect is not covered by this notice. You should review their policies and contact them directly with any questions.
+
+
+
+<a name="inforetain"></a>**8\. HOW LONG DO WE KEEP YOUR INFORMATION?**
+
+
+
+**_In Short:_** _Only as long as necessary for the purposes in this notice, or as required by law._
+
+*   **App data on your device** (grades, subjects, semesters, settings) — kept until you delete it in the app or uninstall the app. It is not kept by us at all.
+
+*   **Google Analytics for Firebase** — event and user data is retained for 12 months in Firebase; aggregated, non-identifying reports may be kept longer. IP addresses are not stored by Google Analytics for Firebase; they are used only to derive coarse location and then discarded.
+
+*   **Firebase Crashlytics** — crash reports are retained for approximately 90 days.
+
+*   **Google AdMob** — Google retains ad-serving log data in line with its published data-retention policies; Google states that it anonymizes IP-address data in ad logs after around 9 months and cookie/identifier data in ad logs after around 18 months.
+
+*   **Support correspondence** — kept for as long as needed to handle your request and for a short period afterwards, then deleted.
+
+*   **Purchase records** — Google and Apple keep transaction records under their own policies; we keep only the confirmation that a purchase was made, for as long as needed to honor the ad-free entitlement and to meet refund and tax/accounting obligations.
+
+Where we no longer have a need to process your personal information and cannot delete it immediately (for example because it sits in a backup), we will isolate it from further processing until deletion is possible.
+
+
+
+<a name="infosafe"></a>**9\. HOW DO WE KEEP YOUR INFORMATION SAFE?**
+
+
+
+**_In Short:_** _We use reasonable organizational and technical measures, but no system is completely secure._
+
+
+
+Communication between the app and Google's and Apple's services is encrypted in transit (HTTPS/TLS), and data held by those providers is protected under their own security and compliance programs. Despite these safeguards, no method of transmission over the internet or of electronic storage is completely secure, so we cannot guarantee absolute security. You should keep your device secure and use up-to-date software.
+
+
+
+<a name="minors"></a>**10\. DO WE COLLECT INFORMATION FROM MINORS?**
+
+
+
+**_In Short:_** _PlusPoints is a general-audience tool, not directed at children under 13, and we do not knowingly collect their personal information. Because many users are students, consent and advertising need care._
+
+
+
+PlusPoints is a grade calculator used by students, teachers, parents, and adult learners. It is not designed for or directed at children under 13, and we do not knowingly collect personal information from a child under 13.
+
+
+
+Under the GDPR, consent given directly by a child below the age of digital consent in their country (13 to 16, depending on the country) is not valid on its own — a parent or guardian must give or authorize it (Art. 8 GDPR). If you are below that age, please review this notice with a parent or guardian, and do not give advertising or analytics consent without their involvement. Behavioral advertising directed at children is also discouraged under data-protection law (GDPR Recital 38) and the UK Age-Appropriate Design Code.
+
+
+
+If you believe we may have collected personal information from a child under 13, or processed a minor's data without the required parental consent, contact us at info@fidelisfactory.ch and we will delete it.
+
+
+
+<a name="privacyrights"></a>**11\. WHAT ARE YOUR PRIVACY RIGHTS?**
+
+
+
+**_In Short:_** _In the EEA, the UK, Switzerland, and Canada you have rights to access, correct, delete, restrict, port, and object to the processing of your personal information, and to withdraw consent._
+
+
+
+In these regions you may have the right to: request access to and a copy of your personal information; request rectification or erasure; restrict processing; data portability; object to processing (including processing based on legitimate interests, and processing for direct-marketing purposes); and not be subject to solely automated decision-making with legal or similarly significant effects. You can make a request using the contact details in "[HOW CAN YOU CONTACT US ABOUT THIS NOTICE?](#contact)" below.
+
+
+
+**Response times.** For a request under the GDPR or UK GDPR, we will respond within **one month** of receiving it. We may extend that by up to **two further months** where the request is complex or you have made several requests, and we will tell you within the first month if we need to. There is normally no charge, unless a request is manifestly unfounded or excessive.
+
+
+
+**Identifying you (Art. 11 GDPR).** The app has no account, and we hold no information that identifies you by name. We may therefore be unable to identify you from a rights request on its own. If that is the case, we will not be able to act on the request unless you can give us information that lets us locate the relevant data — for example, details from a support email you previously sent. We will not collect additional identifying information solely to comply with a request.
+
+
+
+**Advertising and analytics consent.** In the EEA, the UK, and Switzerland you can change or withdraw your consent at any time in the app under **Settings → Change Privacy Settings**, and turn off crash reporting under **Settings → Send crash reports**. You can also limit advertising at the device level — on Android by resetting your Advertising ID or turning off ad personalization, and on iOS by denying tracking under _Settings → Privacy & Security → Tracking_.
+
+
+
+**Complaints.** If you are in the EEA or the UK and believe we are processing your personal information unlawfully, you have the right to complain to your [EEA supervisory authority](https://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm) or the [UK Information Commissioner's Office](https://ico.org.uk/make-a-complaint/data-protection-complaints/data-protection-complaints/). If you are in Switzerland, you may contact the [Federal Data Protection and Information Commissioner](https://www.edoeb.admin.ch/edoeb/en/home.html).
+
+
+
+<a name="withdrawconsent"></a>**Withdrawing your consent.** Where we rely on your consent, you can withdraw it at any time — through the in-app consent form (**Settings → Change Privacy Settings**), the **Send crash reports** switch, or by contacting us. Withdrawal does not affect the lawfulness of processing carried out before it, nor processing carried out on a lawful basis other than consent.
+
+
+
+<a name="DNT"></a>**12\. CONTROLS FOR DO-NOT-TRACK FEATURES**
+
+
+
+No uniform standard for browser "Do-Not-Track" ("DNT") signals has been finalized, and we do not respond to DNT signals.
+
+
+
+In the app you can control tracking directly:
+
+*   the in-app consent form (**Settings → Change Privacy Settings**, shown where consent is required);
+
+*   on Android, resetting or limiting your Advertising ID, or turning off ad personalization, in your device settings;
+
+*   on iOS, denying tracking through Apple's App Tracking Transparency prompt or under _Settings → Privacy & Security → Tracking_;
+
+*   turning off the **Send crash reports** switch under **Settings**; or
+
+*   making the one-time in-app purchase to remove ads.
+
+
+
+<a name="uslaws"></a>**13\. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?**
+
+
+
+**_In Short:_** _If you are a resident of a U.S. state with a comprehensive consumer privacy law (such as California, Colorado, Connecticut, Utah, Virginia, and others), you may have rights regarding your personal information._
+
+
 
 **What categories of personal information do we collect?**
 
-  
 
-We have collected the following categories of personal information in the past twelve (12) months:
 
-  
+In the past twelve (12) months we have collected:
+
+
 
 **Category**
 
@@ -385,449 +491,176 @@ We have collected the following categories of personal information in the past t
 
 A. Identifiers
 
-Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name
+Online identifier (advertising identifier) and Internet Protocol (IP) address
 
-  
-
-NO
-
-  
+**YES** — collected automatically through advertising and analytics services
 
 B. Personal information as defined in the California Customer Records statute
 
 Name, contact information, education, employment, employment history, and financial information
 
-  
-
 NO
-
-  
 
 C. Protected classification characteristics under state or federal law
 
 Gender and date of birth
 
-  
-
 NO
-
-  
 
 D. Commercial information
 
-Transaction information, purchase history, financial details, and payment information
+Transaction information and purchase history
 
-  
-
-NO
-
-  
+**YES** — limited to the fact that you made the one-time in-app purchase; payment details are handled by Google or Apple, not us
 
 E. Biometric information
 
 Fingerprints and voiceprints
 
-  
-
 NO
-
-  
 
 F. Internet or other similar network activity
 
-Browsing history, search history, online behavior, interest data, and interactions with our and other websites, applications, systems, and advertisements
+Interactions with the app and with advertisements, and app-usage information
 
-  
-
-NO
-
-  
+**YES** — through analytics and advertising services
 
 G. Geolocation data
 
 Device location
 
-  
-
-NO
-
-  
+**YES** — approximate (coarse) location derived from IP address only, not precise GPS location
 
 H. Audio, electronic, visual, thermal, olfactory, or similar information
 
-Images and audio, video or call recordings created in connection with our business activities
-
-  
+Images and audio, video or call recordings
 
 NO
-
-  
 
 I. Professional or employment-related information
 
-Business contact details in order to provide you our Services at a business level or job title, work history, and professional qualifications if you apply for a job with us
-
-  
+Business contact details, job title, work history
 
 NO
-
-  
 
 J. Education Information
 
 Student records and directory information
 
-  
-
-NO
-
-  
+NO — grades are stored only on your device and are not collected by us
 
 K. Inferences drawn from collected personal information
 
-Inferences drawn from any of the collected personal information listed above to create a profile or summary about, for example, an individual’s preferences and characteristics
+Inferences used to create a profile about your preferences and characteristics
 
-  
-
-NO
-
-  
+NO — we do not create advertising profiles ourselves; Google's advertising services may do so where you have consented
 
 L. Sensitive personal Information
 
-  
-
 NO
 
-  
 
-  
-
-We will use and retain the collected personal information as needed to provide the Services or for:
-
-*   Category B - not collected
-
-We may also collect other personal information outside of these categories through instances where you interact with us in person, online, or by phone or mail in the context of:
-
-*   Receiving help through our customer support channels;
-
-*   Participation in customer surveys or contests; and
-
-*   Facilitation in the delivery of our Services and to respond to your inquiries.
 
 **How do we use and share your personal information?**
 
-  
 
-Learn about how we use your personal information in the section, "[HOW DO WE PROCESS YOUR INFORMATION?](#infouse)"
 
-  
+See "[HOW DO WE PROCESS YOUR INFORMATION?](#infouse)" and "[WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)".
+
+
 
 **Will your information be shared with anyone else?**
 
-  
 
-We may disclose your personal information with our service providers pursuant to a written contract between us and each service provider. Learn more about how we disclose personal information to in the section, "[WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?](#whoshare)"
 
-  
+We may disclose your personal information to our service providers under a written contract with each of them.
 
-We may use your personal information for our own business purposes, such as for undertaking internal research for technological development and demonstration. This is not considered to be "selling" of your personal information.
 
-  
 
-We have not disclosed, sold, or shared any personal information to third parties for a business or commercial purpose in the preceding twelve (12) months. We will not sell or share personal information in the future belonging to website visitors, users, and other consumers.
+We do not "sell" personal information for monetary consideration. We may "share" your advertising identifier with Google for cross-context behavioral (personalized) advertising as those terms are defined under some state laws. You can opt out using the in-app consent controls (**Settings → Change Privacy Settings**) or your device's advertising or tracking settings.
 
-  
 
-**California Residents**
 
-  
+**Your rights**
 
-California Civil Code Section 1798.83, also known as the "Shine The Light" law permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
 
-  
 
-If you are under 18 years of age, reside in California, and have a registered account with the Services, you have the right to request removal of unwanted data that you publicly post on the Services. To request removal of such data, please contact us using the contact information provided below and include the email address associated with your account and a statement that you reside in California. We will make sure the data is not publicly displayed on the Services, but please be aware that the data may not be completely or comprehensively removed from all our systems (e.g., backups, etc.).
+Depending on your state of residence (for example, California under the CCPA/CPRA, and Colorado, Connecticut, Utah, Virginia, and other states under their respective laws), you may have some or all of the following rights. These rights are not absolute, and in some cases we may decline a request as permitted by law.
 
-  
+*   **Right to know / access** — to confirm whether we process your personal information, and to access the categories and specific pieces we have collected, the categories of sources, the purposes, and the categories of third parties with whom we share it.
 
-**CCPA Privacy Notice**
+*   **Right to correct** inaccuracies in your personal information.
 
-  
+*   **Right to delete** your personal information, subject to exceptions provided by law (such as another consumer's free-speech rights, our legal obligations, or protecting against illegal activity).
 
-This section applies only to California residents. Under the California Consumer Privacy Act (CCPA), you have the rights listed below.
+*   **Right to data portability** — to obtain a copy of the personal information you previously provided in a portable format.
 
-  
+*   **Right to opt out** of processing for (i) targeted advertising, (ii) the "sale" of personal information, and (iii) profiling in furtherance of decisions that produce legal or similarly significant effects.
 
-The California Code of Regulations defines a "residents" as:
+*   **Right to limit** the use and disclosure of sensitive personal information — we do not process sensitive personal information.
 
-  
+*   **Right to non-discrimination** — we will not deny you services, charge a different price, or provide a different level or quality of service because you exercised your rights.
 
-(1) every individual who is in the State of California for other than a temporary or transitory purpose and
 
-(2) every individual who is domiciled in the State of California who is outside the State of California for a temporary or transitory purpose
 
-  
+**How to exercise your rights.** Submit a request by email to info@fidelisfactory.ch. You may use an authorized agent; we may require proof of authorization and may require you to verify your identity directly with us.
 
-All other individuals are defined as "non-residents."
 
-  
 
-If this definition of "resident" applies to you, we must adhere to certain rights and obligations regarding your personal information.
+**Verification.** For your protection, we may need to verify your identity before acting on a request. We will ask for information we can match against information we already hold, or contact you at an email address you have previously used. We will use information provided in a request only to verify identity or authority, and delete it once verification is complete.
 
-  
 
-**Your rights with respect to your personal data**
 
-  
+**Response times.** We will respond within the timeframe required by the applicable state law — generally within 45 days, extendable once by a further 45 days (or up to 60 days in some states) where reasonably necessary, in which case we will tell you why.
 
-Right to request deletion of the data — Request to delete
 
-  
 
-You can ask for the deletion of your personal information. If you ask us to delete your personal information, we will respect your request and delete your personal information, subject to certain exceptions provided by law, such as (but not limited to) the exercise by another consumer of his or her right to free speech, our compliance requirements resulting from a legal obligation, or any processing that may be required to protect against illegal activities.
+**Appeals.** If we decline to act on your request, we will explain why. You may appeal by emailing info@fidelisfactory.ch; we will respond in writing within the period required by the applicable state law (generally 45 to 60 days). If your appeal is denied, residents of some states may then complain to their state Attorney General — for example, [the Virginia Attorney General](https://www.oag.state.va.us/consumer-protection/index.php/file-a-complaint).
 
-  
 
-Right to be informed — Request to know
 
-  
+**California "Shine the Light".** California Civil Code Section 1798.83 lets California residents request, once per year and free of charge, information about categories of personal information (if any) we disclosed to third parties for their direct-marketing purposes in the preceding calendar year. We do not disclose personal information to third parties for their direct-marketing purposes.
 
-Depending on the circumstances, you have a right to know:
 
-*   whether we collect and use your personal information;
 
-*   the categories of personal information that we collect;
+**California minors.** The app has no user accounts and does not host publicly displayed user content, so the right of California residents under 18 to request removal of content they have publicly posted does not apply.
 
-*   the purposes for which the collected personal information is used;
 
-*   whether we sell or share personal information to third parties;
 
-*   the categories of personal information that we sold, shared, or disclosed for a business purpose;
+<a name="policyupdates"></a>**14\. DO WE MAKE UPDATES TO THIS NOTICE?**
 
-*   the categories of third parties to whom the personal information was sold, shared, or disclosed for a business purpose;
 
-*   the business or commercial purpose for collecting, selling, or sharing personal information; and
 
-*   the specific pieces of personal information we collected about you.
+_**In Short:** Yes, as needed to stay accurate and compliant._
 
-In accordance with applicable law, we are not obligated to provide or delete consumer information that is de-identified in response to a consumer request or to re-identify individual data to verify a consumer request.
 
-  
 
-Right to Non-Discrimination for the Exercise of a Consumer’s Privacy Rights
+We may update this notice from time to time. The updated version is indicated by a revised "Last updated" date and takes effect as soon as it is accessible. If we make material changes, we will take reasonable steps to notify you — for example by a notice in the app or on the website.
 
-  
 
-We will not discriminate against you if you exercise your privacy rights.
 
-  
+<a name="contact"></a>**15\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?**
 
-Right to Limit Use and Disclosure of Sensitive Personal Information
 
-  
 
-We do not process consumer's sensitive personal information.
+If you have questions or comments about this notice, email us at info@fidelisfactory.ch.
 
-  
 
-Verification process
 
-  
+The **data controller** is located in Switzerland and can be reached at info@fidelisfactory.ch.
 
-Upon receiving your request, we will need to verify your identity to determine you are the same person about whom we have the information in our system. These verification efforts require us to ask you to provide information so that we can match it with information you have previously provided us. For instance, depending on the type of request you submit, we may ask you to provide certain information so that we can match the information you provide with the information we already have on file, or we may contact you through a communication method (e.g., phone or email) that you have previously provided to us. We may also use other verification methods as the circumstances dictate.
 
-  
 
-We will only use personal information provided in your request to verify your identity or authority to make the request. To the extent possible, we will avoid requesting additional information from you for the purposes of verification. However, if we cannot verify your identity from the information already maintained by us, we may request that you provide additional information for the purposes of verifying your identity and for security or fraud-prevention purposes. We will delete such additionally provided information as soon as we finish verifying you.
+<a name="request"></a>**16\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?**
 
-  
+*   **App data on your device:** review and edit it directly in the app; delete it by removing your semesters and subjects or by uninstalling the app; clear any backup in your device settings.
 
-Other privacy rights
+*   **Advertising and analytics data:** change your consent in the app under **Settings → Change Privacy Settings**, limit tracking in your device settings (Android: reset the Advertising ID; iOS: deny tracking under _Settings → Privacy & Security → Tracking_), or contact us.
 
-*   You may object to the processing of your personal information.
+*   **Crash reports:** turn off the **Send crash reports** switch under **Settings**.
 
-*   You may request correction of your personal data if it is incorrect or no longer relevant, or ask to restrict the processing of the information.
+*   **Everything else, or to make a formal request:** email info@fidelisfactory.ch. We will respond in accordance with applicable data-protection law.
 
-*   You can designate an authorized agent to make a request under the CCPA on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with the CCPA.
+<style>ul { list-style-type: square; } ul > li > ul { list-style-type: circle; } ul > li > ul > li > ul { list-style-type: square; } ol li { font-family: Arial ; }</style>
 
-*   You may request to opt out from future selling or sharing of your personal information to third parties. Upon receiving an opt-out request, we will act upon the request as soon as feasibly possible, but no later than fifteen (15) days from the date of the request submission.
-
-To exercise these rights, you can contact us by visiting info@fidelisfactory.ch, by email at info@fidelisfactory.ch, or by referring to the contact details at the bottom of this document. If you have a complaint about how we handle your data, we would like to hear from you.
-
-  
-
-**Colorado Residents**
-
-  
-
-This section applies only to Colorado residents. Under the Colorado Privacy Act (CPA), you have the rights listed below. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law.
-
-*   Right to be informed whether or not we are processing your personal data
-
-*   Right to access your personal data
-
-*   Right to correct inaccuracies in your personal data
-
-*   Right to request deletion of your personal data
-
-*   Right to obtain a copy of the personal data you previously shared with us
-
-*   Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ("profiling")
-
-To submit a request to exercise these rights described above, please email info@fidelisfactory.ch or visit info@fidelisfactory.ch.
-
-  
-
-If we decline to take action regarding your request and you wish to appeal our decision, please email us at info@fidelisfactory.ch. Within forty-five (45) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions.
-
-  
-
-**Connecticut Residents**
-
-  
-
-This section applies only to Connecticut residents. Under the Connecticut Data Privacy Act (CTDPA), you have the rights listed below. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law.
-
-*   Right to be informed whether or not we are processing your personal data
-
-*   Right to access your personal data
-
-*   Right to correct inaccuracies in your personal data
-
-*   Right to request deletion of your personal data
-
-*   Right to obtain a copy of the personal data you previously shared with us
-
-*   Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ("profiling")
-
-To submit a request to exercise these rights described above, please email info@fidelisfactory.ch or visit info@fidelisfactory.ch.
-
-  
-
-If we decline to take action regarding your request and you wish to appeal our decision, please email us at info@fidelisfactory.ch. Within sixty (60) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions.
-
-  
-
-**Utah Residents**
-
-  
-
-This section applies only to Utah residents. Under the Utah Consumer Privacy Act (UCPA), you have the rights listed below. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law.
-
-*   Right to be informed whether or not we are processing your personal data
-
-*   Right to access your personal data
-
-*   Right to request deletion of your personal data
-
-*   Right to obtain a copy of the personal data you previously shared with us
-
-*   Right to opt out of the processing of your personal data if it is used for targeted advertising or the sale of personal data
-
-To submit a request to exercise these rights described above, please email info@fidelisfactory.ch or visit info@fidelisfactory.ch.
-
-  
-
-**Virginia Residents**
-
-  
-
-Under the Virginia Consumer Data Protection Act (VCDPA):
-
-  
-
-"Consumer" means a natural person who is a resident of the Commonwealth acting only in an individual or household context. It does not include a natural person acting in a commercial or employment context.
-
-  
-
-"Personal data" means any information that is linked or reasonably linkable to an identified or identifiable natural person. "Personal data" does not include de-identified data or publicly available information.
-
-  
-
-"Sale of personal data" means the exchange of personal data for monetary consideration.
-
-  
-
-If this definition of "consumer" applies to you, we must adhere to certain rights and obligations regarding your personal data.
-
-  
-
-Your rights with respect to your personal data
-
-*   Right to be informed whether or not we are processing your personal data
-
-*   Right to access your personal data
-
-*   Right to correct inaccuracies in your personal data
-
-*   Right to request deletion of your personal data
-
-*   Right to obtain a copy of the personal data you previously shared with us
-
-*   Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects ("profiling")
-
-Exercise your rights provided under the Virginia VCDPA
-
-  
-
-You may contact us by email at info@fidelisfactory.ch or visit info@fidelisfactory.ch.
-
-  
-
-If you are using an authorized agent to exercise your rights, we may deny a request if the authorized agent does not submit proof that they have been validly authorized to act on your behalf.
-
-  
-
-Verification process  
-
-  
-
-We may request that you provide additional information reasonably necessary to verify you and your consumer's request. If you submit the request through an authorized agent, we may need to collect additional information to verify your identity before processing your request.
-
-  
-
-Upon receiving your request, we will respond without undue delay, but in all cases, within forty-five (45) days of receipt. The response period may be extended once by forty-five (45) additional days when reasonably necessary. We will inform you of any such extension within the initial 45-day response period, together with the reason for the extension.
-
-  
-
-Right to appeal
-
-  
-
-If we decline to take action regarding your request, we will inform you of our decision and reasoning behind it. If you wish to appeal our decision, please email us at info@fidelisfactory.ch. Within sixty (60) days of receipt of an appeal, we will inform you in writing of any action taken or not taken in response to the appeal, including a written explanation of the reasons for the decisions. If your appeal is denied, you may contact the [Attorney General to submit a complaint](https://www.oag.state.va.us/consumer-protection/index.php/file-a-complaint).
-
-  
-
-**11\. DO WE MAKE UPDATES TO THIS NOTICE?**
-
-  
-
-_**In Short:** Yes, we will update this notice as necessary to stay compliant with relevant laws._
-
-  
-
-We may update this privacy notice from time to time. The updated version will be indicated by an updated "Revised" date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this privacy notice frequently to be informed of how we are protecting your information.
-
-  
-
-**12\. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?**
-
-  
-
-If you have questions or comments about this notice, you may email us at info@fidelisfactory.ch.
-  
-
-If you are a resident in the European Economic Area or Switzerland, we are the "data controller" of your personal information. We have appointed Philip Junker to be our representative in the EEA and Switzerland. You can contact them directly regarding our processing of your information, by email at philip.junker@fidelisfactory.ch, by visiting [http://www.fidelisfactory.ch](http://www.fidelisfactory.ch).
-
-  
-
-**13\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?**
-
-  
-
-Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it. To request to review, update, or delete your personal information, please visit: info@fidelisfactory.ch.
-
-ul { list-style-type: square; } ul > li > ul { list-style-type: circle; } ul > li > ul > li > ul { list-style-type: square; } ol li { font-family: Arial ; }
-
-This privacy policy was created using Termly's [Privacy Policy Generator](https://termly.io/products/privacy-policy-generator/).
+This privacy notice was originally generated with Termly's [Privacy Policy Generator](https://termly.io/products/privacy-policy-generator/) and has since been substantially rewritten.

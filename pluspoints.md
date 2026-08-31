@@ -10,7 +10,7 @@ order: 20
 Kostenlos.**
 <p align="center"><img src="/public/img/PlusPointsOverview.png"></p>
 <p style="text-align: center;">
-<a class="button" href="/pluspoints-faq">Frequently Asked Quesitons</a>
+<a class="button" href="/pluspoints-faq">Frequently Asked Questions</a>
 </p>
 
 ## Download

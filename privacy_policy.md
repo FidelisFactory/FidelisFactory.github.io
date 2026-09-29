@@ -8,7 +8,7 @@ order: 100
 
 
 
-**Last updated August 31, 2026**
+**Last updated September 28, 2026**
 
 
 
@@ -39,7 +39,7 @@ This notice applies when you:
 
 
 
-**What personal information do we process?** PlusPoints has no account. The grades, exams, subjects, semesters, and settings you enter are stored **only on your device** and are not sent to us. When you use the app, technical and usage information — your device's advertising identifier, device and app characteristics, in-app events, coarse location from your IP address, and crash diagnostics — is processed mainly through Google (Firebase and AdMob) and, for purchases, through Google or Apple. If you contact us, we process your message and the contact details you use. Learn more about [information we collect](#infocollect).
+**What personal information do we process?** PlusPoints has no account. The grades, exams, subjects, semesters, and settings you enter are stored **only on your device** and are not sent to us. When you use the app, technical and usage information — your device's advertising identifier, device and app characteristics, in-app events (which features you use, and the country, state and grading system you chose — never your grades or anything you type), coarse location from your IP address, and crash diagnostics — is processed mainly through Google (Firebase and AdMob) and, for purchases, through Google or Apple. If you propose a semester template, the details you choose to share are published publicly on GitHub. If you contact us, we process your message and the contact details you use. Learn more about [information we collect](#infocollect).
 
 
 
@@ -133,7 +133,7 @@ Want the full detail? [Review the notice in full](#toc).
 
 
 
-PlusPoints has no user accounts. The grades, exams, subjects, semesters, grade-color preferences, and other settings you enter are stored **locally on your device** (in the app's database and preferences). We do not receive this information. It is included in a system backup only if you have that enabled on your device — on Android, Google account backup or device-to-device transfer; on iOS, iCloud Backup or a direct device-to-device transfer — in which case it is stored in your own Google or Apple account, not by us. See [Section 5](#appdata).
+PlusPoints has no user accounts. The grades, exams, subjects, semesters, grade-color preferences, the country, German state (Bundesland) and grading system you choose, your Abitur calculator plan, and other settings you enter are stored **locally on your device** (in the app's database and preferences). We do not receive this information. It is included in a system backup only if you have that enabled on your device — on Android, Google account backup or device-to-device transfer; on iOS, iCloud Backup or a direct device-to-device transfer — in which case it is stored in your own Google or Apple account, not by us. See [Section 5](#appdata).
 
 
 
@@ -142,6 +142,10 @@ PlusPoints has no user accounts. The grades, exams, subjects, semesters, grade-c
 
 
 If you use the in-app "Report a problem," "Make a suggestion," or "Contact us" options, your device's email app opens with a message addressed to support@fidelisfactory.ch. The message is pre-filled with basic technical details (app version, operating-system version, device model, and a random bug reference) to help us diagnose issues. You choose whether to send it and what else to include. If you send it, we process the content of your message and your email address in order to respond.
+
+
+
+**Semester templates you propose.** If you use "Propose a template," you pick one of your semesters and enter your school's name and the school year. The app then publishes this as a **public issue on GitHub** (github.com, operated by GitHub, Inc.) so that we can review it and add it to the templates other students can start from: the school name and school year you entered, the name of the semester, its subjects with their weights and whether they count, and your country as set in the app. **No grades or exams are included.** The issue can be seen by anyone on the internet, so only propose what you are happy to publish. To have a proposal removed, email us at info@fidelisfactory.ch.
 
 
 
@@ -163,7 +167,7 @@ When you use the app, the following is collected automatically, primarily by Goo
 
 *   _Device and technical data._ Device model, manufacturer, operating-system version, language and region, screen characteristics, mobile network / carrier information, coarse (approximate) location derived from your IP address, and IP address.
 
-*   _App-activity data._ Aggregated, non-identifying information about how you use the app — for example which screens and features you open and how often — collected through Google Analytics for Firebase.
+*   _App-activity data._ How you use the app, collected through Google Analytics for Firebase: which screens you open and which features you use (for example creating a semester, starting from a template, the Grade Compass, the promotion check, or the Abitur calculator); the country, German state, grading system, and app language you chose; in the Grade Compass, which interests and subject areas you pick and which professions you save or open; and simple outcomes, such as how many templates a search found, which kind of answer the promotion check gave (for example "enough" or "unclear"), or how many exam results you entered in the Abitur calculator. **This never includes your grades, points, or averages, or any names or other text you type.**
 
 *   _Crash and diagnostic data._ Automatic crash reports, including the state of your device and a stack trace at the moment of a crash, collected through Firebase Crashlytics.
 
@@ -263,6 +267,8 @@ We share information only in the following situations:
 
 *   **Google — advertising (AdMob).** For **Google AdMob**, Google acts as an **independent controller** of the data it collects and uses for its own ad-delivery, measurement, fraud-prevention, and reporting purposes, under Google's Ads Controller-Controller Data Protection Terms. For **personalized** advertising, we and Google may be **joint controllers within the meaning of Art. 26 GDPR** in respect of the collection of data on your device and its transmission to Google; Google is then responsible for what it does with that data. Google publishes its controller terms and a description of the arrangement, and explains its practices at [How Google uses information from sites or apps that use its services](https://policies.google.com/technologies/partner-sites) and in the [Google Privacy Policy](https://policies.google.com/privacy).
 
+*   **GitHub — template proposals.** If you propose a semester template, the details listed in [Section 1](#infocollect) are published as a public issue on **GitHub** (GitHub, Inc.), which acts as an independent controller for its platform; see the [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement).
+
 *   **Payments.** In-app purchases are processed by **Google** (Google Play, on Android) or **Apple** (the App Store, on iOS), each acting as an independent controller for payment processing. We receive only confirmation that a purchase was made.
 
 *   **Legal and safety.** We may disclose information where required by law, to respond to lawful requests from public authorities, to enforce the app's terms, or to protect the rights, property, or safety of the PlusPoints project, its users, or others.
@@ -273,7 +279,7 @@ We do not sell your personal information for money. Sharing your advertising ide
 
 
 
-**International data transfers.** We are located in Switzerland. Google and Apple operate in the United States and other countries, so the information collected through their services may be transferred to and processed there and in other countries where they or their sub-processors operate. Where this involves a transfer of personal data of individuals in the EEA, the UK, or Switzerland to a country not recognized as providing an adequate level of protection, the transfer is made under appropriate safeguards — primarily Google's and Apple's certification under the **EU–U.S. Data Privacy Framework** and its UK and Swiss extensions, with the **European Commission's Standard Contractual Clauses** as the fallback where the Framework does not apply. You may request more information about these safeguards, or a copy of them, by contacting us at info@fidelisfactory.ch.
+**International data transfers.** We are located in Switzerland. Google, Apple, and GitHub operate in the United States and other countries, so the information collected through their services may be transferred to and processed there and in other countries where they or their sub-processors operate. Where this involves a transfer of personal data of individuals in the EEA, the UK, or Switzerland to a country not recognized as providing an adequate level of protection, the transfer is made under appropriate safeguards — primarily Google's, Apple's, and GitHub's certification under the **EU–U.S. Data Privacy Framework** and its UK and Swiss extensions, with the **European Commission's Standard Contractual Clauses** as the fallback where the Framework does not apply. You may request more information about these safeguards, or a copy of them, by contacting us at info@fidelisfactory.ch.
 
 
 
@@ -287,7 +293,7 @@ We do not sell your personal information for money. Sharing your advertising ide
 
 The grades, exams, subjects, semesters, and settings you enter are stored **only on your device**, in the app's local database and preferences. This data is:
 
-*   **Not transmitted to us or to any third party** as part of normal use of the app.
+*   **Not transmitted to us or to any third party** as part of normal use of the app. The one exception is a semester you choose to propose as a template: its name, subjects, and weights — never grades — are published on GitHub (see [Section 1](#infocollect)).
 
 *   **Processed on your device** by the app's calculation engine.
 
@@ -335,7 +341,7 @@ The app displays advertising provided by Google AdMob. To select, deliver, and m
 
 
 
-We use Google Analytics for Firebase to collect aggregated, non-identifying usage statistics so we can understand and improve the app — including which features are used and whether crash reporting is switched on or off — and Firebase Crashlytics to receive automatic crash reports, including diagnostic information about your device's state at the moment of a crash, so we can fix problems.
+We use Google Analytics for Firebase to collect usage statistics so we can understand and improve the app — which screens and features are used, the country, state, grading system, and language chosen, and whether crash reporting is switched on or off (see [Section 1](#infocollect)); these statistics never contain your grades or the names and text you type — and Firebase Crashlytics to receive automatic crash reports, including diagnostic information about your device's state at the moment of a crash, so we can fix problems.
 
 
 
@@ -367,7 +373,7 @@ The app may link to third-party websites, online services, or applications, and 
 
 *   **App data on your device** (grades, subjects, semesters, settings) — kept until you delete it in the app or uninstall the app. It is not kept by us at all.
 
-*   **Google Analytics for Firebase** — event and user data is retained for 12 months in Firebase; aggregated, non-identifying reports may be kept longer. IP addresses are not stored by Google Analytics for Firebase; they are used only to derive coarse location and then discarded.
+*   **Google Analytics for Firebase** — event and user data is retained for 14 months; aggregated, non-identifying reports may be kept longer. IP addresses are not stored by Google Analytics for Firebase; they are used only to derive coarse location and then discarded.
 
 *   **Firebase Crashlytics** — crash reports are retained for approximately 90 days.
 
@@ -658,6 +664,7 @@ The **data controller** is located in Switzerland and can be reached at info@fid
 *   **Advertising and analytics data:** change your consent in the app under **Settings → Change Privacy Settings**, limit tracking in your device settings (Android: reset the Advertising ID; iOS: deny tracking under _Settings → Privacy & Security → Tracking_), or contact us.
 
 *   **Crash reports:** turn off the **Send crash reports** switch under **Settings**.
+*   **Template proposals:** email info@fidelisfactory.ch to have a template you proposed removed from GitHub.
 
 *   **Everything else, or to make a formal request:** email info@fidelisfactory.ch. We will respond in accordance with applicable data-protection law.
 

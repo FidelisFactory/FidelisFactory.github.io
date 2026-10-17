@@ -1,0 +1,75 @@
+# Checks the semester templates in every pull request. On every change to
+# main, it publishes all of them as one file, which the apps download from
+# https://www.fidelisfactory.ch/pluspoints/templates.json (GitHub Pages serves
+# it from the fidelisfactory-website branch).
+name: Templates
+
+on:
+  pull_request:
+    paths:
+      - "pluspoints/templates/**"
+      - "scripts/build_templates_bundle.py"
+      - ".github/workflows/templates.yml"
+  push:
+    branches: [main]
+    paths:
+      - "pluspoints/templates/**"
+      - "scripts/build_templates_bundle.py"
+      - ".github/workflows/templates.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the templates
+        run: python3 scripts/build_templates_bundle.py
+
+  publish:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+    concurrency:
+      group: publish-templates
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: fidelisfactory-website
+          path: website
+      - name: Build the template file
+        # --previous keeps the published generatedAt when no template changed,
+        # so the file stays byte-identical and nothing gets committed.
+        run: >-
+          python3 scripts/build_templates_bundle.py
+          --previous website/pluspoints/templates.json
+          --output website/pluspoints/templates.json
+      - name: Commit it to the website branch
+        id: commit
+        working-directory: website
+        run: |
+          git add pluspoints/templates.json
+          if git diff --cached --quiet; then
+            echo "No template changed, so there is nothing to publish."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Publish the semester templates from ${GITHUB_SHA::7}"
+          git push origin HEAD:fidelisfactory-website
+          echo "published=true" >> "$GITHUB_OUTPUT"
+      - name: Rebuild the website
+        # A push made with the workflow's token may not start a Pages build on
+        # its own, so ask for one.
+        if: steps.commit.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"

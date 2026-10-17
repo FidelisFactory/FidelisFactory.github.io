@@ -1,0 +1,191 @@
+#!/usr/bin/env python3
+"""Checks every semester template and combines them into the file the apps download.
+
+    python3 scripts/build_templates_bundle.py                 # only check the templates
+    python3 scripts/build_templates_bundle.py --output FILE   # check them and write the file
+
+The apps download the file from https://www.fidelisfactory.ch/pluspoints/templates.json;
+pluspoints/templates/README.md describes its format. With --previous FILE, the new file
+keeps FILE's generatedAt when no template changed, so publishing an unchanged set of
+templates produces a byte-identical file and the apps download nothing new.
+
+Exits with 1 if a template has an error. Warnings (such as a subject without a name,
+which the file leaves out) don't fail the check.
+"""
+import argparse
+import datetime
+import json
+import os
+import re
+import sys
+import unicodedata
+
+SCHEMA_VERSION = 1
+ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+TEMPLATES_DIR = os.path.join(ROOT, "pluspoints", "templates")
+# The fields the apps read. Any other field in a template file goes into the
+# published file as it is (apps ignore fields they don't know), except
+# subject_count, which only repeats the number of subjects.
+TEXT_FIELDS = ("name", "description", "school")
+LEFT_OUT_FIELDS = ("subject_count",)
+# The weights the apps can calculate with: 1, 0.5, 0,5, 1/2 or 50%.
+WEIGHT = re.compile(r"[0-9]+([.,][0-9]+)?|[0-9]+/[0-9]*[1-9][0-9]*|[0-9]+%")
+
+
+class Report:
+    def __init__(self):
+        self.errors = []
+        self.warnings = []
+
+    def error(self, path, message):
+        self.errors.append((path, message))
+
+    def warning(self, path, message):
+        self.warnings.append((path, message))
+
+    def print(self):
+        in_actions = os.environ.get("GITHUB_ACTIONS") == "true"
+        for kind, entries in (("error", self.errors), ("warning", self.warnings)):
+            for path, message in entries:
+                if in_actions:
+                    print(f"::{kind} file={path}::{message}")
+                else:
+                    print(f"{kind}: {path}: {message}")
+
+
+def natural_key(text):
+    """Sorts case- and accent-insensitively, and numbers by value: "9. Klasse" before "12. Klasse"."""
+    plain = "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c)).casefold()
+    parts = re.split(r"([0-9]+)", plain)
+    return [int(part) if i % 2 else part for i, part in enumerate(parts)]
+
+
+def check_template(path, data, report):
+    """Returns the template as it goes into the file, or None if it can't go in."""
+    if not isinstance(data, dict):
+        report.error(path, "the file must contain one JSON object")
+        return None
+    problems = []
+    template_id = data.get("id")
+    if not isinstance(template_id, int) or isinstance(template_id, bool):
+        problems.append("id must be a whole number")
+    for field in TEXT_FIELDS:
+        if not isinstance(data.get(field), str):
+            problems.append(f"{field} must be text")
+    if isinstance(data.get("school"), str) and not data["school"].strip():
+        problems.append("school must not be empty")
+    subjects = data.get("subjects")
+    if not isinstance(subjects, list):
+        problems.append("subjects must be a list")
+        subjects = []
+    for number, subject in enumerate(subjects, start=1):
+        if not isinstance(subject, dict):
+            problems.append(f"subject {number} must be a JSON object")
+            continue
+        if not isinstance(subject.get("name"), str):
+            problems.append(f"subject {number}: name must be text")
+        weight = subject.get("weight")
+        if not isinstance(weight, str) or not WEIGHT.fullmatch(weight.strip()):
+            problems.append(f"subject {number}: weight must look like 1, 0.5, 1/2 or 50%, not {weight!r}")
+        if not isinstance(subject.get("counted"), bool):
+            problems.append(f"subject {number}: counted must be true or false")
+    for problem in problems:
+        report.error(path, problem)
+    if problems:
+        return None
+
+    subject_count = data.get("subject_count")
+    if subject_count is not None and subject_count != len(subjects):
+        report.warning(path, f"subject_count is {subject_count}, but the template has {len(subjects)} subjects")
+    named = [
+        {"name": s["name"].strip(), "weight": s["weight"].strip(), "counted": s["counted"]}
+        for s in subjects
+        if s["name"].strip()
+    ]
+    if not named:
+        report.warning(path, "no subject has a name, so the template is left out")
+        return None
+    if len(named) < len(subjects):
+        report.warning(path, f"{len(subjects) - len(named)} subject(s) without a name are left out")
+
+    template = {"id": template_id}
+    template.update({field: data[field].strip() for field in TEXT_FIELDS})
+    template["subjects"] = named
+    for field, value in data.items():
+        if field not in template and field not in LEFT_OUT_FIELDS:
+            template[field] = value
+    return template
+
+
+def collect_templates(report):
+    entries = []
+    first_file_with_id = {}
+    for folder in os.listdir(TEMPLATES_DIR):
+        folder_path = os.path.join(TEMPLATES_DIR, folder)
+        if not os.path.isdir(folder_path):
+            continue
+        for filename in os.listdir(folder_path):
+            if not filename.endswith(".json"):
+                continue
+            path = os.path.relpath(os.path.join(folder_path, filename), ROOT)
+            try:
+                with open(os.path.join(folder_path, filename), encoding="utf-8") as file:
+                    data = json.load(file)
+            except (ValueError, UnicodeDecodeError) as error:
+                report.error(path, f"not valid JSON: {error}")
+                continue
+            template = check_template(path, data, report)
+            if template is None:
+                continue
+            if template["id"] in first_file_with_id:
+                report.error(path, f"id {template['id']} is already used by {first_file_with_id[template['id']]}")
+                continue
+            first_file_with_id[template["id"]] = path
+            entries.append((natural_key(folder), natural_key(template["name"]), template["id"], template))
+    entries.sort(key=lambda entry: entry[:3])
+    return [entry[3] for entry in entries]
+
+
+def previous_generated_at(path, templates):
+    """generatedAt of the file at path, if it holds exactly these templates."""
+    if not path or not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as file:
+            previous = json.load(file)
+    except (ValueError, UnicodeDecodeError):
+        return None
+    if isinstance(previous, dict) and previous.get("schemaVersion") == SCHEMA_VERSION and previous.get("templates") == templates:
+        return previous.get("generatedAt")
+    return None
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--output", help="where to write the combined file")
+    parser.add_argument("--previous", help="the currently published file, to keep its generatedAt if nothing changed")
+    args = parser.parse_args()
+
+    report = Report()
+    templates = collect_templates(report)
+    report.print()
+    if report.errors:
+        print(f"{len(report.errors)} error(s): fix them before the templates can be published.")
+        return 1
+
+    generated_at = previous_generated_at(args.previous, templates) or (
+        datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    )
+    print(f"{len(templates)} templates, {len(report.warnings)} warning(s).")
+    if args.output:
+        bundle = {"schemaVersion": SCHEMA_VERSION, "generatedAt": generated_at, "templates": templates}
+        os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
+        with open(args.output, "w", encoding="utf-8") as file:
+            json.dump(bundle, file, ensure_ascii=False, separators=(",", ":"))
+            file.write("\n")
+        print(f"Wrote {args.output} (generatedAt {generated_at}).")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -28,8 +28,29 @@ TEMPLATES_DIR = os.path.join(ROOT, "pluspoints", "templates")
 # subject_count, which only repeats the number of subjects.
 TEXT_FIELDS = ("name", "description", "school")
 LEFT_OUT_FIELDS = ("subject_count",)
-# The weights the apps can calculate with: 1, 0.5, 0,5, 1/2 or 50%.
-WEIGHT = re.compile(r"[0-9]+([.,][0-9]+)?|[0-9]+/[0-9]*[1-9][0-9]*|[0-9]+%")
+# The weights the Android app can save and calculate with: 1, 0.5, 0,5 or 1/2.
+# Its subject form only accepts these (no "50%", although the core reads it),
+# and the core crashes on a weight of "0".
+WEIGHT = re.compile(r"([0-9]+)(?:[.,]([0-9]+))?|([0-9]+)/([0-9]+)")
+# The apps store ids as 32-bit numbers.
+MAX_ID = 2**31 - 1
+
+
+def weight_is_usable(weight):
+    match = WEIGHT.fullmatch(weight.strip())
+    if not match:
+        return False
+    if match.group(3) is not None:
+        return int(match.group(3)) > 0 and int(match.group(4)) > 0
+    return float(f"{match.group(1)}.{match.group(2) or 0}") > 0
+
+
+def escape_annotation(text, is_property=False):
+    """Escapes text for a GitHub workflow command, the way @actions/core does."""
+    text = text.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    if is_property:
+        text = text.replace(":", "%3A").replace(",", "%2C")
+    return text
 
 
 class Report:
@@ -48,7 +69,7 @@ class Report:
         for kind, entries in (("error", self.errors), ("warning", self.warnings)):
             for path, message in entries:
                 if in_actions:
-                    print(f"::{kind} file={path}::{message}")
+                    print(f"::{kind} file={escape_annotation(path, True)}::{escape_annotation(f'{path}: {message}')}")
                 else:
                     print(f"{kind}: {path}: {message}")
 
@@ -67,8 +88,8 @@ def check_template(path, data, report):
         return None
     problems = []
     template_id = data.get("id")
-    if not isinstance(template_id, int) or isinstance(template_id, bool):
-        problems.append("id must be a whole number")
+    if not isinstance(template_id, int) or isinstance(template_id, bool) or not 0 < template_id <= MAX_ID:
+        problems.append(f"id must be a whole number from 1 to {MAX_ID}")
     for field in TEXT_FIELDS:
         if not isinstance(data.get(field), str):
             problems.append(f"{field} must be text")
@@ -85,8 +106,8 @@ def check_template(path, data, report):
         if not isinstance(subject.get("name"), str):
             problems.append(f"subject {number}: name must be text")
         weight = subject.get("weight")
-        if not isinstance(weight, str) or not WEIGHT.fullmatch(weight.strip()):
-            problems.append(f"subject {number}: weight must look like 1, 0.5, 1/2 or 50%, not {weight!r}")
+        if not isinstance(weight, str) or not weight_is_usable(weight):
+            problems.append(f"subject {number}: weight must be more than 0 and look like 1, 0.5 or 1/2, not {weight!r}")
         if not isinstance(subject.get("counted"), bool):
             problems.append(f"subject {number}: counted must be true or false")
     for problem in problems:
@@ -114,6 +135,12 @@ def check_template(path, data, report):
     for field, value in data.items():
         if field not in template and field not in LEFT_OUT_FIELDS:
             template[field] = value
+    try:
+        json.dumps(template, ensure_ascii=False).encode("utf-8")
+    except UnicodeEncodeError:
+        # A lone surrogate such as "\ud83e": JSON allows it, UTF-8 can't hold it.
+        report.error(path, "contains text that isn't valid Unicode, such as half of an emoji")
+        return None
     return template
 
 
@@ -123,11 +150,14 @@ def collect_templates(report):
     for folder in os.listdir(TEMPLATES_DIR):
         folder_path = os.path.join(TEMPLATES_DIR, folder)
         if not os.path.isdir(folder_path):
+            if folder != "README.md":
+                report.warning(os.path.relpath(folder_path, ROOT), "not published: templates go into a school folder")
             continue
         for filename in os.listdir(folder_path):
-            if not filename.endswith(".json"):
-                continue
             path = os.path.relpath(os.path.join(folder_path, filename), ROOT)
+            if not filename.endswith(".json") or os.path.isdir(os.path.join(folder_path, filename)):
+                report.warning(path, "not published: only .json files directly in a school folder are templates")
+                continue
             try:
                 with open(os.path.join(folder_path, filename), encoding="utf-8") as file:
                     data = json.load(file)

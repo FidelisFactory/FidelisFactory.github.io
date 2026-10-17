@@ -16,8 +16,8 @@ create it. It is recommended to copy an existing template and adjust the values 
 
 Give the template the next free `id` (the highest `id` of all templates plus one). The apps tell
 templates apart by their `id`, so it must be unique and must never be reused for a different
-template. Ids 5878 to 5999 are reserved for the German templates that the Android app currently
-bundles itself.
+template. Ids 5878 to 5999 are reserved for the German templates of the Android app's upcoming
+2.3.0 version.
 
 A template file has these fields:
 
@@ -28,9 +28,10 @@ A template file has these fields:
 | `description` | Shown on the template's page; can be empty |
 | `school` | The school name, the way students search for it |
 | `subject_count` | The number of subjects |
-| `subjects` | The subjects, each with a `name`, a `weight` (such as `1`, `0.5`, `1/2` or `50%`) and `counted` (`true` or `false`) |
+| `subjects` | The subjects, each with a `name`, a `weight` (more than 0, such as `1`, `0.5` or `1/2`) and `counted` (`true` or `false`) |
 
-Any other field is published as it is; apps ignore fields they don't know.
+Any other field of a template (not of a subject) is published as it is; apps ignore fields they
+don't know.
 
 ### Check your change
 
@@ -49,9 +50,10 @@ On every change to `main`, the [Templates workflow](../../.github/workflows/temp
 all templates into one file and publishes it on the website:
 https://www.fidelisfactory.ch/pluspoints/templates.json
 
-The apps ship a copy of that file and check for a newer one at most once a day, so a merged
-template reaches students within about a day, without an app release. If no template changed,
-the published file stays byte-identical and the apps download nothing new.
+The Android app ships a copy of that file and checks for a newer one when a student opens the
+template browser, at most once a day. So a merged template reaches students without an app
+release. (The iOS app doesn't use this file.) If no template changed, the published file stays
+byte-identical and the app downloads nothing new.
 
 The file looks like this:
 
@@ -59,7 +61,8 @@ The file looks like this:
 {"schemaVersion": 1, "generatedAt": "2026-10-17T19:32:01Z", "templates": [{"id": 4063, "name": "...", "description": "...", "school": "...", "subjects": [{"name": "...", "weight": "1", "counted": true}]}]}
 ```
 
-- `generatedAt` tells the apps which of two copies is newer.
+- `generatedAt`, in UTC and written like `2026-10-17T19:32:01Z`, tells the app which of two copies
+  is newer.
 - Text is trimmed, subjects without a name are left out, and so are templates without any named
   subject. `subject_count` is left out because it only repeats the number of subjects.
 - Templates are sorted by school folder and name.

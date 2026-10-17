@@ -26,12 +26,13 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Check the templates
         run: python3 scripts/build_templates_bundle.py
 
   publish:
-    if: github.event_name != 'pull_request'
+    # Only main is ever published: not a manual run on another branch.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -40,8 +41,12 @@ jobs:
       group: publish-templates
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      # The tip of main, not the commit that started the run: re-running an
+      # old run must not publish templates that main has moved past.
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/checkout@v5
         with:
           ref: fidelisfactory-website
           path: website
@@ -63,13 +68,14 @@ jobs:
           fi
           git -c user.name="github-actions[bot]" \
               -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
-              commit -m "Publish the semester templates from ${GITHUB_SHA::7}"
+              commit -m "Publish the semester templates from $(git -C "$GITHUB_WORKSPACE" rev-parse --short HEAD)"
           git push origin HEAD:fidelisfactory-website
           echo "published=true" >> "$GITHUB_OUTPUT"
       - name: Rebuild the website
         # A push made with the workflow's token may not start a Pages build on
-        # its own, so ask for one.
-        if: steps.commit.outputs.published == 'true'
+        # its own, so ask for one. A manual run always asks, so it can repair
+        # a run whose push worked but whose build request failed.
+        if: steps.commit.outputs.published == 'true' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds"

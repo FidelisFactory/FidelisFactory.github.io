@@ -1,0 +1,72 @@
+# Words that keep a template proposal from being added (see import_proposals.py).
+# A proposal is checked word by word, ignoring case and accents, and digits split
+# words: "test4" contains "test", but "Testfach" doesn't. One word per line.
+# A maintainer can let a proposal through anyway with the template-approved label.
+
+# Test entries
+test
+tests
+testing
+asdf
+asdfg
+asdfgh
+qwert
+qwertz
+qwerty
+lorem
+ipsum
+dummy
+foobar
+blabla
+
+# Insults and slurs (German, French, Italian, English). Words that also have a
+# harmless meaning, such as "Pute" (turkey) or "Troia" (Troy), aren't listed.
+arschloch
+fotze
+wichser
+wixer
+hurensohn
+hure
+nutte
+schlampe
+ficken
+fick
+fickt
+schwuchtel
+spast
+spasti
+missgeburt
+neger
+connard
+connasse
+salope
+encule
+enculer
+nique
+niquer
+cazzo
+stronzo
+stronza
+puttana
+vaffanculo
+coglione
+minchia
+frocio
+fuck
+fucking
+fucker
+motherfucker
+bitch
+cunt
+asshole
+nigger
+nigga
+faggot
+retard
+whore
+slut
+porn
+cock
+pussy
+wanker
+twat

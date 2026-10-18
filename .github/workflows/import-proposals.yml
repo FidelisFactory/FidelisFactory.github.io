@@ -1,0 +1,82 @@
+# Once a day, turns the template proposals that students send from the app
+# (issues with the template-proposal label) into templates, with no person in
+# the loop: scripts/import_proposals.py holds every rule. It commits the new
+# templates to main, starts the Templates workflow to publish them, and answers
+# each proposal. pluspoints/templates/README.md describes the rules.
+name: Import proposals
+
+on:
+  schedule:
+    # Every day at 04:17 UTC, early morning in Switzerland.
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Only show what would be added, without committing or answering the proposals
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  import:
+    if: github.repository == 'FidelisFactory/FidelisFactory.github.io'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit the new templates to main
+      issues: write # answer the proposals
+      actions: write # start the Templates workflow
+    concurrency:
+      group: import-proposals
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      # Only a run on main changes anything, like the publishing in the
+      # Templates workflow. A manual run is a dry run unless unchecked.
+      DRY_RUN: ${{ (inputs.dry_run || github.ref != 'refs/heads/main') && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Read the open proposals
+        run: >-
+          gh issue list --repo "$GITHUB_REPOSITORY" --label template-proposal --state open
+          --search "sort:created-asc" --limit 200 --json number,body,labels
+          > "$RUNNER_TEMP/proposals.json"
+      - name: Turn them into templates
+        run: >-
+          python3 scripts/import_proposals.py import
+          --proposals "$RUNNER_TEMP/proposals.json"
+          --results "$RUNNER_TEMP/results.json"
+          | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Check all templates
+        run: python3 scripts/build_templates_bundle.py
+      - name: Commit the new templates to main
+        id: commit
+        if: env.DRY_RUN == 'false'
+        run: |
+          git add pluspoints/templates
+          if git diff --cached --quiet; then
+            echo "No proposal was added."
+            exit 0
+          fi
+          # The import only ever adds files; anything else would be a bug.
+          if ! git diff --cached --quiet --diff-filter=a; then
+            echo "::error::The import changed existing files, so nothing is committed."
+            exit 1
+          fi
+          proposals=$(jq -r '[.[] | select(.action == "added") | "#\(.number)"] | join(", ")' "$RUNNER_TEMP/results.json")
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Add the templates proposed in $proposals"
+          git push origin HEAD:main
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+      - name: Publish them
+        # A push made with the workflow's token doesn't start other workflows,
+        # so start the Templates workflow, which publishes main.
+        if: steps.commit.outputs.committed == 'true'
+        run: gh workflow run templates.yml --repo "$GITHUB_REPOSITORY" --ref main
+      - name: Answer the proposals
+        # Only after the push: a proposal is never closed as added before its
+        # template is on main.
+        if: env.DRY_RUN == 'false'
+        run: python3 scripts/import_proposals.py answer --results "$RUNNER_TEMP/results.json"

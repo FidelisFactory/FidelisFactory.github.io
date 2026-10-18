@@ -50,6 +50,47 @@ It reports errors (for example a duplicate `id`, a file not named after its `id`
 apps can't calculate with), which
 must be fixed, and warnings, which don't block publishing.
 
+## How proposals become templates
+
+Students propose templates from the Android app, and each proposal arrives as an issue with the
+`template-proposal` label. Once a day, the
+[Import proposals workflow](../../.github/workflows/import-proposals.yml) turns them into templates
+without anyone reviewing them first. `scripts/import_proposals.py` holds the rules:
+
+- The school, the subjects and their weights stay as the student typed them. Only spaces are
+  tidied up, invisible characters are removed, a weight like `1.0` is written `1`, and subjects
+  without a name are left out.
+- The template's `name` is the school year the student typed. Its `description` is their own name
+  for the semester, unless that only repeats the year or the school.
+- It goes into the folder named like the school, or holding a template for a school named like
+  it, ignoring case and accents. Otherwise it gets a new folder named after the school.
+- It gets the next free `id` and a file name made from its name, like `1Klasse.json`.
+
+A proposal is not added, and a comment on its issue says why, if:
+
+- it can't be read, has no subject with a name, has more than 40 subjects, or has text longer than
+  100 characters (80 for a subject);
+- a weight isn't one the apps can use;
+- an existing template has the same school and the same subjects;
+- it contains a word from `scripts/proposal_blocked_words.txt` (test entries and insults), or a
+  link, an email address, a phone number or HTML.
+
+If the word list or the check for links and contact details is wrong about a proposal, reopen its
+issue and add the `template-approved` label: the next run adds it without those two checks. The import closes added
+proposals with the `template-added` label and the others with `template-rejected`. It adds at most
+20 proposals a day; the rest wait for the next day.
+
+Each run that adds templates is one commit on `main` ("Add the templates proposed in #41, #42"). To
+undo one, revert its commit: the next published file leaves those templates out, and the apps drop
+them within a day. To keep a proposal out of the import, remove its `template-proposal` label. To
+stop the import, disable the workflow in the Actions tab. A manual run of the workflow is a dry run
+unless you uncheck that: its summary shows what it would add. GitHub also disables the schedule
+after 60 days without any activity in the repository; it can be enabled again in the same place.
+
+The import reads the JSON block of the issue (`school`, `description` with the year, `subjects`)
+and the line with the student's own name for the semester, so an app that files proposals must
+keep that format.
+
 ## How the apps get the templates
 
 On every change to `main`, the [Templates workflow](../../.github/workflows/templates.yml) combines

@@ -1,72 +1,56 @@
 # Words that keep a template proposal from being added (see import_proposals.py).
-# A proposal is checked word by word, ignoring case and accents, and digits split
-# words: "test4" contains "test", but "Testfach" doesn't. One word per line.
-# A maintainer can let a proposal through anyway with the template-approved label.
+# Every text of a proposal is checked word by word, ignoring case and accents, and
+# digits split words. A word ending in * also matches inside longer words
+# ("fuck*" matches "fuckyou"); the others only match whole words, so "Wattwil"
+# doesn't match "twat". One word per line. A maintainer can let a proposal through
+# anyway, see the README.
+#
+# Insults and slurs in German, French, Italian and English. Words that also have
+# a harmless meaning, such as "Pute" (turkey) or "Troia" (Troy), aren't listed,
+# and neither is slang that students use for cheering on, like "niquer" in an
+# existing template's name ("On va tout niquer").
 
-# Test entries
-test
-tests
-testing
-asdf
-asdfg
-asdfgh
-qwert
-qwertz
-qwerty
-lorem
-ipsum
-dummy
-foobar
-blabla
-
-# Insults and slurs (German, French, Italian, English). Words that also have a
-# harmless meaning, such as "Pute" (turkey) or "Troia" (Troy), aren't listed.
-arschloch
-fotze
-wichser
+arschloch*
+fotze*
+wichser*
 wixer
-hurensohn
+hurensohn*
 hure
 nutte
-schlampe
+schlampe*
 ficken
 fick
 fickt
-schwuchtel
+schwuchtel*
 spast
 spasti
-missgeburt
+missgeburt*
 neger
-connard
-connasse
-salope
+connard*
+connasse*
+salope*
 encule
 enculer
-nique
-niquer
 cazzo
 stronzo
 stronza
-puttana
-vaffanculo
-coglione
+puttana*
+vaffanculo*
+coglione*
 minchia
 frocio
-fuck
-fucking
-fucker
-motherfucker
+fuck*
 bitch
 cunt
-asshole
-nigger
-nigga
-faggot
+asshole*
+nigger*
+nigga*
+faggot*
 retard
-whore
+whore*
 slut
 porn
 cock
 pussy
-wanker
+wanker*
 twat

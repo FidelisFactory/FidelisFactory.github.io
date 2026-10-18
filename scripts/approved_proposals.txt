@@ -1,0 +1,8 @@
+# Proposals the daily import adds although its word list or its check for links
+# and contact details rejected them (see import_proposals.py). Each line is the
+# issue number and the hash from the import's comment on that issue, like
+#
+#   41 9f86d081884c7d65
+#
+# The hash covers the issue's text, so an approval no longer counts once the
+# issue is edited. Reopen the issue after adding its line.

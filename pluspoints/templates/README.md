@@ -18,7 +18,8 @@ if the school has no folder yet, create one. The school's name as students know 
 file's `school` field: names of folders and files never reach the apps. It is recommended to copy an
 existing template and adjust the values in the fields.
 
-Give the template the next free `id` (the highest `id` of all templates plus one). The apps tell
+Give the template the next free `id` below 10000 (the highest such `id` plus one); the ids from
+10000 on belong to the proposals that the daily import adds (see below). The apps tell
 templates apart by their `id`, so it must be unique and must never be reused for a different
 template. Ids 5878 to 5999 are reserved for the German templates of the Android app's upcoming
 2.3.0 version.
@@ -60,25 +61,34 @@ without anyone reviewing them first. `scripts/import_proposals.py` holds the rul
 - The school, the subjects and their weights stay as the student typed them. Only spaces are
   tidied up, invisible characters are removed, a weight like `1.0` is written `1`, and subjects
   without a name are left out.
-- The template's `name` is the school year the student typed. Its `description` is their own name
-  for the semester, unless that only repeats the year or the school.
+- The template's `name` is the school year the student typed, or their own name for the semester
+  if the year is empty. Its `description` is that semester name, unless it only repeats the name or
+  the school.
 - It goes into the folder named like the school, or holding a template for a school named like
-  it, ignoring case and accents. Otherwise it gets a new folder named after the school.
-- It gets the next free `id` and a file name made from its name, like `1Klasse.json`.
+  it, ignoring case and accents. Otherwise it gets a new folder named after the school, with only
+  the characters that every system accepts in a folder name.
+- Its `id` is 10000 plus the number of its issue, and its file name is made from its name, like
+  `1Klasse.json`.
 
 A proposal is not added, and a comment on its issue says why, if:
 
 - it can't be read, has no subject with a name, has more than 40 subjects, or has text longer than
   100 characters (80 for a subject);
 - a weight isn't one the apps can use;
-- an existing template has the same school and the same subjects;
-- it contains a word from `scripts/proposal_blocked_words.txt` (test entries and insults), or a
-  link, an email address, a phone number or HTML.
+- an existing template has the same school and the same subjects, in the same order;
+- its school name looks like a test entry ("test", "asdf"), or it contains a word from
+  `scripts/proposal_blocked_words.txt` (insults);
+- it contains a link, an email address, a phone number or HTML.
 
-If the word list or the check for links and contact details is wrong about a proposal, reopen its
-issue and add the `template-approved` label: the next run adds it without those two checks. The import closes added
-proposals with the `template-added` label and the others with `template-rejected`. It adds at most
-20 proposals a day; the rest wait for the next day.
+The token that the app files proposals with ships inside the app, so anyone could file one, and set
+any label on it. Approvals therefore live in this repository: if the last two checks are wrong
+about a proposal, add the line that the comment on its issue shows to
+`scripts/approved_proposals.txt` on `main` and reopen the issue. The next run adds it without those
+two checks, unless the issue was edited since.
+
+The import closes added proposals with the `template-added` label and the others with
+`template-rejected`. A run adds at most 20 proposals and answers at most 50; the rest wait for the
+next day. The proposals up to #38 were added by hand, so it leaves those alone.
 
 Each run that adds templates is one commit on `main` ("Add the templates proposed in #41, #42"). To
 undo one, revert its commit: the next published file leaves those templates out, and the apps drop

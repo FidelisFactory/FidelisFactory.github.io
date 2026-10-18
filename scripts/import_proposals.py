@@ -57,7 +57,7 @@ MAX_TEXT = 100
 MAX_SUBJECT_NAME = 80
 MAX_WEIGHT = 10
 # Only a school name gives a test entry away; a subject can be called "Test".
-TEST_WORDS = {"test", "tests", "testing", "asdf", "asdfg", "qwert", "qwertz", "qwerty", "lorem", "ipsum", "dummy", "foobar", "blabla"}
+TEST_WORDS = {"test", "tests", "testing", "asdf", "asdfg", "asdfgh", "qwert", "qwertz", "qwerty", "lorem", "ipsum", "dummy", "foobar", "blabla"}
 
 # The app's issue holds the proposal as a JSON block, and the student's own
 # name for the semester in a list item above it.
@@ -76,7 +76,7 @@ CONTACT = re.compile(
     r"https?:|www\.|://"  # links
     r"|\b[\w-]+\.(?:com|net|org|ch|de|fr|it|at|li|io|ly|gg|me|tv|app|xyz|info|co)\b"  # domains
     r"|[\w.+-]+@[\w-]+\.[A-Za-z]{2,}"  # email addresses
-    r"|(?:\+|\b)[0-9](?:[ ./-]?[0-9]){8,}\b"  # phone numbers: 9 or more digits
+    r"|(?:\+[0-9]|\b0)(?:[ ./-]?[0-9]){8,}\b"  # phone numbers: 9 or more digits from a + or 0, not "2025/2026 1"
     r"|<[A-Za-z/!]",  # HTML, but not "<3"
     re.I,
 )

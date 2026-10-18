@@ -62,7 +62,8 @@ jobs:
           # Exactly the files the import wrote, so that no proposal is answered
           # as added while git left its file out (for example an ignored name).
           written=$(jq -r '.[] | select(.written) | "pluspoints/templates/\(.path)"' "$RUNNER_TEMP/results.json" | sort)
-          staged=$(git -c core.quotePath=false diff --cached --name-only --diff-filter=A | sort)
+          # -z: git doesn't quote names with accents or quotes then.
+          staged=$(git diff --cached --name-only -z --diff-filter=A | tr '\0' '\n' | sort)
           if [ "$written" != "$staged" ] || ! git diff --cached --quiet --diff-filter=a; then
             echo "::error::The staged changes aren't exactly the templates the import wrote, so nothing is committed."
             exit 1

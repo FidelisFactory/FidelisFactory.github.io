@@ -1,6 +1,7 @@
 """Tests for import_proposals.py: python3 -m unittest discover -s scripts"""
 import json
 import os
+import re
 import tempfile
 import unittest
 from unittest import mock
@@ -188,10 +189,13 @@ class ImportTest(unittest.TestCase):
             proposal(48, school="Testfach", year="Schuljahr 2025/2026 <3", semester="St.Gallen 1.9.2025",
                      subjects=[{"name": "Französisch Voci-Test", "weight": "1", "counted": True}]),
             proposal(49, school="Kantonsschule Wattwil, Scunthorpe"),
+            proposal(50, school="Kantonsschule Wil", year="2025/2026", semester="2025/2026 1. Semester"),
+            proposal(51, semester="+41 79 123 45 67"),
+            proposal(52, semester="044 123 45 67"),
         )
 
         self.assertEqual(
-            [("rejected", True)] * 7 + [("added", None)] * 2,
+            [("rejected", True)] * 7 + [("added", None)] * 3 + [("rejected", True)] * 2,
             [(result["action"], result.get("soft")) for result in results],
         )
         self.assertEqual("41 " + ip.body_hash(body(school="test4")), results[0]["approval"])
@@ -257,7 +261,12 @@ class RulesTest(unittest.TestCase):
         self.assertIn("cunt", blocked)
         self.assertIn("fuck", parts)
         self.assertFalse(any(not word or " " in word or "#" in word or "*" in word for word in blocked | parts))
-        self.assertEqual({}, ip.load_approvals())
+        # Every approval in the file is a line the import understands.
+        with open(ip.APPROVALS_FILE, encoding="utf-8") as file:
+            lines = [line.split("#")[0].strip() for line in file]
+        approvals = [line for line in lines if line]
+        self.assertTrue(all(re.fullmatch(r"[0-9]+ [0-9a-f]{16}", line) for line in approvals), approvals)
+        self.assertEqual(len(approvals), len(ip.load_approvals()))
 
 
 class AnswerTest(unittest.TestCase):

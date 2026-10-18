@@ -11,8 +11,12 @@ schools templates.
 
 ### Create a new template
 
-Add a file with the content to the respective school folder. If the school folder does not exist, 
-create it. It is recommended to copy an existing template and adjust the values in the fields.
+Put each template into its school's folder, as a file named after the template's `id`, like
+`kantonsschule-zurich-nord/6026.json`. A folder's name is the school's name in lowercase ASCII
+letters and digits joined by `-` (`Kantonsschule Zürich Nord` becomes `kantonsschule-zurich-nord`);
+if the school has no folder yet, create one. The school's name as students know it goes into the
+file's `school` field: names of folders and files never reach the apps. It is recommended to copy an
+existing template and adjust the values in the fields.
 
 Give the template the next free `id` (the highest `id` of all templates plus one). The apps tell
 templates apart by their `id`, so it must be unique and must never be reused for a different
@@ -42,7 +46,8 @@ Pull requests that change a template are checked automatically. To check locally
 python3 scripts/build_templates_bundle.py
 ```
 
-It reports errors (for example a duplicate `id` or a weight the apps can't calculate with), which
+It reports errors (for example a duplicate `id`, a file not named after its `id`, or a weight the
+apps can't calculate with), which
 must be fixed, and warnings, which don't block publishing.
 
 ## How the apps get the templates
@@ -66,7 +71,7 @@ The file looks like this:
   is newer.
 - Text is trimmed, subjects without a name are left out, and so are templates without any named
   subject. `subject_count` is left out because it only repeats the number of subjects.
-- Templates are sorted by school folder and name.
+- Templates are sorted by their `school` and `name`.
 
 Apps that are already installed keep reading this file, so changes to its format must stay
 compatible: within `schemaVersion` 1, only add fields. A change that older apps can't read needs

@@ -34,6 +34,8 @@ LEFT_OUT_FIELDS = ("subject_count",)
 WEIGHT = re.compile(r"([0-9]+)(?:[.,]([0-9]+))?|([0-9]+)/([0-9]+)")
 # The apps store ids as 32-bit numbers.
 MAX_ID = 2**31 - 1
+# Names Windows can't give a file or folder.
+WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)), *(f"LPT{i}" for i in range(1, 10))}
 # A template's optional country, as an ISO 3166 code like "DE". Without one, a
 # template is Swiss; the Android app before 2.3.0 shows only Swiss templates.
 COUNTRY = re.compile(r"[A-Z]{2}")
@@ -149,19 +151,37 @@ def check_template(path, data, report):
     return template
 
 
+def folder_name(school):
+    """The folder for a school's templates: its name in lowercase ASCII letters and digits
+    joined by "-", like kantonsschule-zurich-nord. No folder name holds what a student
+    typed as such, and every system and git accept these names."""
+    text = unicodedata.normalize("NFKD", school)
+    text = "".join(c for c in text if not unicodedata.combining(c)).lower()
+    name = re.sub(r"[^a-z0-9]+", "-", text).strip("-")[:80].strip("-") or "school"
+    return f"{name}-school" if name.upper() in WINDOWS_RESERVED else name
+
+
 def collect_templates(report):
     entries = []
     first_file_with_id = {}
-    for folder in os.listdir(TEMPLATES_DIR):
+    for folder in sorted(os.listdir(TEMPLATES_DIR)):
         folder_path = os.path.join(TEMPLATES_DIR, folder)
-        if not os.path.isdir(folder_path):
-            if folder != "README.md":
-                report.warning(os.path.relpath(folder_path, ROOT), "not published: templates go into a school folder")
+        # Hidden files such as .DS_Store aren't the repository's.
+        if folder == "README.md" or folder.startswith("."):
             continue
-        for filename in os.listdir(folder_path):
+        relative = os.path.relpath(folder_path, ROOT)
+        if not os.path.isdir(folder_path):
+            report.error(relative, "templates go into a school folder")
+            continue
+        if folder != folder_name(folder):
+            report.error(relative, f"folder names are lowercase ASCII words joined by \"-\", like {folder_name(folder)}")
+            continue
+        for filename in sorted(os.listdir(folder_path)):
             path = os.path.relpath(os.path.join(folder_path, filename), ROOT)
+            if filename.startswith(".") and not filename.endswith(".json"):
+                continue
             if not filename.endswith(".json") or os.path.isdir(os.path.join(folder_path, filename)):
-                report.warning(path, "not published: only .json files directly in a school folder are templates")
+                report.error(path, "only template files belong in a school folder")
                 continue
             try:
                 with open(os.path.join(folder_path, filename), encoding="utf-8") as file:
@@ -172,11 +192,15 @@ def collect_templates(report):
             template = check_template(path, data, report)
             if template is None:
                 continue
+            if filename != f"{template['id']}.json":
+                report.error(path, f"the file must be named after the template's id: {template['id']}.json")
+                continue
             if template["id"] in first_file_with_id:
                 report.error(path, f"id {template['id']} is already used by {first_file_with_id[template['id']]}")
                 continue
             first_file_with_id[template["id"]] = path
-            entries.append((natural_key(folder), natural_key(template["name"]), template["id"], template))
+            # By the school students see, not by folder.
+            entries.append((natural_key(template["school"]), natural_key(template["name"]), template["id"], template))
     entries.sort(key=lambda entry: entry[:3])
     return [entry[3] for entry in entries]
 

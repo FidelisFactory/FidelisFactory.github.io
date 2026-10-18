@@ -64,11 +64,11 @@ without anyone reviewing them first. `scripts/import_proposals.py` holds the rul
 - The template's `name` is the school year the student typed, or their own name for the semester
   if the year is empty. Its `description` is that semester name, unless it only repeats the name or
   the school.
-- It goes into the folder named like the school, or holding a template for a school named like
-  it, ignoring case and accents. Otherwise it gets a new folder named after the school, with only
-  the characters that every system accepts in a folder name.
-- Its `id` is 10000 plus the number of its issue, and its file name is made from its name, like
-  `1Klasse.json`.
+- Its `id` is 10000 plus the number of its issue, and its file is named after it, like
+  `10041.json`.
+- It goes into the school's folder, named by the rule above (`Sek leonard` goes into
+  `sek-leonard`), or into the folder that holds most templates for a school with that folder name.
+  Otherwise the import creates that folder.
 
 A proposal is not added, and a comment on its issue says why, if:
 

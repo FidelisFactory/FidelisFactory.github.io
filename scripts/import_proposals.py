@@ -23,7 +23,6 @@ proposal contains may stop the import of the others.
 import argparse
 import collections
 import hashlib
-import itertools
 import json
 import os
 import re
@@ -32,7 +31,7 @@ import sys
 import time
 import unicodedata
 
-from build_templates_bundle import MAX_ID, TEMPLATES_DIR, Report, check_template, weight_is_usable
+from build_templates_bundle import MAX_ID, TEMPLATES_DIR, Report, check_template, folder_name, weight_is_usable
 
 SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 WORDS_FILE = os.path.join(SCRIPTS_DIR, "proposal_blocked_words.txt")
@@ -82,12 +81,6 @@ CONTACT = re.compile(
     r"|<[A-Za-z/!]",  # HTML, but not "<3"
     re.I,
 )
-# Folder names never reach the apps, so they only use characters that every
-# file system and git accept.
-FOLDER_PUNCTUATION = set(" -,()&'.")
-MAX_FOLDER_CHARACTERS = 80
-MAX_FOLDER_BYTES = 200
-WINDOWS_RESERVED = {"CON", "PRN", "AUX", "NUL", *(f"COM{i}" for i in range(1, 10)), *(f"LPT{i}" for i in range(1, 10))}
 
 
 class Rejected(Exception):
@@ -151,11 +144,6 @@ def load_approvals(path=APPROVALS_FILE):
                 if len(fields) == 2 and fields[0].isdigit():
                     approvals[int(fields[0])] = fields[1].lower()
     return approvals
-
-
-def is_reserved(name):
-    """Windows can't create these names, not even with an extension: CON, NUL.ch, COM¹."""
-    return unicodedata.normalize("NFKC", name.split(".")[0]).strip().upper() in WINDOWS_RESERVED
 
 
 def subjects_key(subjects):
@@ -258,12 +246,7 @@ class Templates:
 
     def __init__(self, directory):
         self.directory = directory
-        # Every name in the directory, files too, ignoring case like macOS and Windows.
-        self.taken = {name.casefold() for name in os.listdir(directory)}
         self.folders = sorted(name for name in os.listdir(directory) if os.path.isdir(os.path.join(directory, name)))
-        self.files = collections.defaultdict(set)
-        for folder in self.folders:
-            self.files[folder] = {name.casefold() for name in os.listdir(os.path.join(directory, folder))}
         self.schools = collections.defaultdict(list)
         self.paths = {}
         self.semesters = {}
@@ -272,7 +255,6 @@ class Templates:
 
     def remember(self, folder, filename, data):
         path = f"{folder}/{filename}"
-        self.files[folder].add(filename.casefold())
         if isinstance(data.get("id"), int):
             self.paths.setdefault(data["id"], path)
         if isinstance(data.get("school"), str):
@@ -284,46 +266,23 @@ class Templates:
         self.semesters.setdefault(semester, (data.get("id"), path))
 
     def folder_for(self, school):
-        """An existing folder named like the school, or holding a template for a school
-        named like it; otherwise a new folder named after the school."""
-        wanted = key(school)
-        for folder in self.folders:
-            if key(folder) == wanted:
-                return folder
+        """The school's folder (see folder_name), or else the folder holding most templates
+        for a school with the same folder name: a "KZN" proposal goes where the existing
+        "KZN" templates are, kantonsschule-zurich-nord."""
+        wanted = folder_name(school)
+        if wanted in self.folders:
+            return wanted
         holding = collections.Counter(
-            folder for folder, schools in self.schools.items() for name in schools if key(name) == wanted
+            folder for folder, schools in self.schools.items() for name in schools if folder_name(name) == wanted
         )
         if holding:
             return max(sorted(holding), key=lambda folder: holding[folder])
-        name = unicodedata.normalize("NFKC", school)
-        name = "".join(c for c in re.sub(r"[/\\_]", "-", name) if c.isalnum() or c in FOLDER_PUNCTUATION)
-        name = " ".join(name.split())[:MAX_FOLDER_CHARACTERS]
-        while len(name.encode("utf-8")) > MAX_FOLDER_BYTES:
-            name = name[:-1]
-        # Leading dots hide a folder; trailing ones and spaces break Windows.
-        name = name.strip(" .-") or "School"
-        if is_reserved(name):
-            name = f"School {name}"
-        for folder in self.folders:
-            if key(folder) == key(name):
-                return folder
-        base = name
-        for number in itertools.count(2):
-            if name.casefold() not in self.taken:
-                return name
-            name = f"{base} {number}"
+        return wanted
 
-    def file_name_for(self, folder, name):
-        """The template's name without spaces and punctuation, like the existing files,
-        unique in its folder ignoring case."""
-        base = "".join(c for c in unicodedata.normalize("NFKC", name) if c.isalnum())[:50] or "Template"
-        for number in itertools.count(1):
-            candidate = base if number == 1 else f"{base}-{number}"
-            if not is_reserved(candidate) and f"{candidate}.json".casefold() not in self.files[folder]:
-                return f"{candidate}.json"
-
-    def add(self, folder, filename, data):
+    def add(self, folder, data):
+        """Writes the template as <folder>/<id>.json and returns that path."""
         os.makedirs(os.path.join(self.directory, folder), exist_ok=True)
+        filename = f"{data['id']}.json"
         path = os.path.join(self.directory, folder, filename)
         # "x": never overwrite a file, whatever the checks above missed.
         file = open(path, "x", encoding="utf-8")
@@ -336,8 +295,8 @@ class Templates:
             raise
         if folder not in self.folders:
             self.folders.append(folder)
-            self.taken.add(folder.casefold())
         self.remember(folder, filename, data)
+        return f"{folder}/{filename}"
 
 
 def handle(issue, templates, blocked_words, approvals):
@@ -362,7 +321,6 @@ def handle(issue, templates, blocked_words, approvals):
         return {"action": "rejected", "reason": "its issue number is too high for a template id", "soft": False}
 
     folder = templates.folder_for(template["school"])
-    filename = templates.file_name_for(folder, template["name"])
     data = {
         "id": template_id,
         "name": template["name"],
@@ -372,12 +330,12 @@ def handle(issue, templates, blocked_words, approvals):
         "subjects": template["subjects"],
     }
     report = Report()
-    if check_template(f"{folder}/{filename}", data, report) is None or report.errors:
+    if check_template(f"{folder}/{template_id}.json", data, report) is None or report.errors:
         # Text that isn't valid Unicode, like half an emoji, gets this far. It
         # would fail the check of all templates, and with it the whole run.
         return {"action": "rejected", "reason": "it doesn't pass the template check", "soft": False}
-    templates.add(folder, filename, data)
-    return {"action": "added", "id": template_id, "path": f"{folder}/{filename}", "written": True}
+    path = templates.add(folder, data)
+    return {"action": "added", "id": template_id, "path": path, "written": True}
 
 
 def import_proposals(issues, templates_dir=TEMPLATES_DIR, blocked_words=None, approvals=None):

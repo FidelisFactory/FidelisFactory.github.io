@@ -33,7 +33,7 @@ class ImportTest(unittest.TestCase):
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory()
         self.templates = self.directory.name
-        self.write("Kantonsschule Zürich Nord", "1Klasse.json", {
+        self.write("kantonsschule-zurich-nord", "4000.json", {
             "id": 4000, "name": "1. Klasse", "description": "", "school": "KZN", "subject_count": 1,
             "subjects": [{"name": "Latein", "weight": "1", "counted": True}],
         })
@@ -70,7 +70,7 @@ class ImportTest(unittest.TestCase):
         [result] = self.run_import(proposal(41, school=" Gymnasium  Neu ", year="1.  Klasse", semester="HS 25 🥀", subjects=subjects))
 
         self.assertEqual(
-            {"number": 41, "labels": ["template-proposal"], "action": "added", "id": 10041, "path": "Gymnasium Neu/1Klasse.json", "written": True},
+            {"number": 41, "labels": ["template-proposal"], "action": "added", "id": 10041, "path": "gymnasium-neu/10041.json", "written": True},
             result,
         )
         self.assertEqual(
@@ -92,11 +92,11 @@ class ImportTest(unittest.TestCase):
 
     def test_answers_a_proposal_added_by_an_earlier_run_as_added(self):
         # The earlier run's answer didn't go through, so the issue is still open.
-        self.write("A", "1Klasse.json", {"id": 10041, "name": "1. Klasse", "description": "", "school": "A", "subjects": MATHE_SPORT})
+        self.write("a", "10041.json", {"id": 10041, "name": "1. Klasse", "description": "", "school": "A", "subjects": MATHE_SPORT})
 
         [result] = self.run_import(proposal(41, school="A"))
 
-        self.assertEqual(("added", 10041, "A/1Klasse.json", False), (result["action"], result["id"], result["path"], result["written"]))
+        self.assertEqual(("added", 10041, "a/10041.json", False), (result["action"], result["id"], result["path"], result["written"]))
 
     def test_goes_into_the_folder_of_the_same_school(self):
         results = self.run_import(
@@ -106,31 +106,36 @@ class ImportTest(unittest.TestCase):
         )
 
         self.assertEqual(
-            ["Kantonsschule Zürich Nord/1Klasse-2.json", "Kantonsschule Zürich Nord/1Klasse-3.json", "Kanti Baden-Wettingen/1Klasse.json"],
+            ["kantonsschule-zurich-nord/10041.json", "kantonsschule-zurich-nord/10042.json", "kanti-baden-wettingen/10043.json"],
             [result["path"] for result in results],
         )
         # The school stays as the student typed it, whatever the folder.
         self.assertEqual("kzn", json.loads(self.read(results[1]["path"]))["school"])
 
-    def test_new_folder_and_file_names_work_on_every_system(self):
-        schools = [".hidden: school?", "README.md", "git~1", "__pycache__", "Aux.Kanti", "COM¹", "NUL .x", "🦄" * 70, "x" * 99]
-        results = self.run_import(*(proposal(41 + i, school=school) for i, school in enumerate(schools)), proposal(60, school="Con", year="Con"))
+    def test_folders_are_lowercase_ascii_and_files_are_named_after_the_id(self):
+        schools = ["Gymnase français de Bienne", ".hidden: school?", "README.md", "git~1", "__pycache__", "Con", "🦄" * 70, "Sek leonard"]
+        results = self.run_import(*(proposal(41 + i, school=school) for i, school in enumerate(schools)))
 
-        self.assertEqual(["added"] * 10, [result["action"] for result in results])
         self.assertEqual(
-            ["hidden school", "README.md 2", "git1", "pycache", "School Aux.Kanti", "School COM1", "School NUL .x", "School", "x" * 80, "School Con"],
-            [result["path"].split("/")[0] for result in results],
+            ["gymnase-francais-de-bienne/10041.json", "hidden-school/10042.json", "readme-md/10043.json", "git-1/10044.json",
+             "pycache/10045.json", "con-school/10046.json", "school/10047.json", "sek-leonard/10048.json"],
+            [result["path"] for result in results],
         )
-        self.assertEqual("Con-2.json", results[-1]["path"].split("/")[1])
+        # The check accepts every one of them.
+        report = ip.Report()
+        for folder, filename, data in ip.read_existing(self.templates):
+            ip.check_template(f"{folder}/{filename}", data, report)
+            self.assertEqual((folder, filename), (ip.folder_name(folder), f"{data['id']}.json"))
+        self.assertEqual([], report.errors)
 
     def test_doesnt_add_a_semester_twice(self):
         latin = [{"name": "latein", "weight": "1.0", "counted": True}]
         results = self.run_import(proposal(41, school="KZN", subjects=latin), proposal(42), proposal(43, year="2. Klasse"))
 
         self.assertEqual(
-            [("duplicate", 4000, "Kantonsschule Zürich Nord/1Klasse.json"),
-             ("added", 10042, "Kantonsschule Musterhausen/1Klasse.json"),
-             ("duplicate", 10042, "Kantonsschule Musterhausen/1Klasse.json")],
+            [("duplicate", 4000, "kantonsschule-zurich-nord/4000.json"),
+             ("added", 10042, "kantonsschule-musterhausen/10042.json"),
+             ("duplicate", 10042, "kantonsschule-musterhausen/10042.json")],
             [(result["action"], result["id"], result["path"]) for result in results],
         )
 
@@ -147,7 +152,7 @@ class ImportTest(unittest.TestCase):
         )
 
         self.assertEqual([("rejected", False)] * 8, [(result["action"], result["soft"]) for result in results])
-        self.assertEqual(["Kantonsschule Zürich Nord/1Klasse.json"], self.paths())
+        self.assertEqual(["kantonsschule-zurich-nord/4000.json"], self.paths())
 
     def test_a_crafted_proposal_only_rejects_itself(self):
         lone_surrogate = '```json\n{"school": "A", "subjects": [{"name": "Mathe \\ud83e", "weight": "1", "counted": true}]}\n```'
@@ -160,15 +165,15 @@ class ImportTest(unittest.TestCase):
         )
 
         self.assertEqual(["rejected"] * 4 + ["added"], [result["action"] for result in results])
-        self.assertEqual(["Kantonsschule Musterhausen/1Klasse.json", "Kantonsschule Zürich Nord/1Klasse.json"], self.paths())
+        self.assertEqual(["kantonsschule-musterhausen/10045.json", "kantonsschule-zurich-nord/4000.json"], self.paths())
 
     def test_an_unexpected_error_only_rejects_that_proposal(self):
         real_add = ip.Templates.add
 
-        def add(templates, folder, filename, data):
+        def add(templates, folder, data):
             if data["school"] == "Broken":
                 raise OSError("disk full")
-            real_add(templates, folder, filename, data)
+            return real_add(templates, folder, data)
 
         with mock.patch.object(ip.Templates, "add", add):
             results = self.run_import(proposal(41, school="Broken"), proposal(42))
@@ -277,7 +282,7 @@ class AnswerTest(unittest.TestCase):
         return [command[:-2] for command in commands if command[1] == "issue"]
 
     def test_comments_labels_and_closes_each_proposal(self):
-        added = {"number": 41, "labels": [], "action": "added", "id": 10041, "path": "A/1Klasse.json", "written": True}
+        added = {"number": 41, "labels": [], "action": "added", "id": 10041, "path": "a/10041.json", "written": True}
         rejected = {"number": 42, "labels": [], "action": "rejected", "reason": "it has no school name", "soft": False}
 
         commands = self.answer([added, rejected])
@@ -291,10 +296,10 @@ class AnswerTest(unittest.TestCase):
              ["gh", "issue", "close", "42", "--reason", "not planned"]],
             commands,
         )
-        self.assertIn("template 10041: `pluspoints/templates/A/1Klasse.json`", commands[0][-1])
+        self.assertIn("template 10041: `pluspoints/templates/a/10041.json`", commands[0][-1])
 
     def test_an_approved_proposal_loses_its_rejected_label(self):
-        commands = self.answer([{"number": 41, "labels": ["template-proposal", "template-rejected"], "action": "added", "id": 10041, "path": "A/1Klasse.json"}])
+        commands = self.answer([{"number": 41, "labels": ["template-proposal", "template-rejected"], "action": "added", "id": 10041, "path": "a/10041.json"}])
 
         self.assertEqual(["gh", "issue", "edit", "41", "--add-label", "template-added", "--remove-label", "template-rejected"], commands[1])
 

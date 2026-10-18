@@ -189,7 +189,7 @@ class ImportTest(unittest.TestCase):
             proposal(48, school="Testfach", year="Schuljahr 2025/2026 <3", semester="St.Gallen 1.9.2025",
                      subjects=[{"name": "Französisch Voci-Test", "weight": "1", "counted": True}]),
             proposal(49, school="Kantonsschule Wattwil, Scunthorpe"),
-            proposal(50, school="Kantonsschule Wil", year="2025/2026", semester="2025/2026 1. Semester"),
+            proposal(50, school="Kantonsschule Wil", year="Gym 1.0 2025/2026", semester="2025/2026 1. Semester"),
             proposal(51, semester="+41 79 123 45 67"),
             proposal(52, semester="044 123 45 67"),
         )

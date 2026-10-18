@@ -76,7 +76,9 @@ CONTACT = re.compile(
     r"https?:|www\.|://"  # links
     r"|\b[\w-]+\.(?:com|net|org|ch|de|fr|it|at|li|io|ly|gg|me|tv|app|xyz|info|co)\b"  # domains
     r"|[\w.+-]+@[\w-]+\.[A-Za-z]{2,}"  # email addresses
-    r"|(?:\+[0-9]|\b0)(?:[ ./-]?[0-9]){8,}\b"  # phone numbers: 9 or more digits from a + or 0, not "2025/2026 1"
+    # Phone numbers: 9 or more digits that start like Swiss ones ("079", "+41"),
+    # unlike school years ("2025/2026 1. Semester", "Gym 1.0 2025/2026").
+    r"|(?:\+[0-9](?:[ ./-]?[0-9]){8,}|\b0[0-9](?:[ ./-]?[0-9]){7,})\b"
     r"|<[A-Za-z/!]",  # HTML, but not "<3"
     re.I,
 )

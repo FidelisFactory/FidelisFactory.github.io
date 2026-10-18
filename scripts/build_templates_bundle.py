@@ -34,6 +34,9 @@ LEFT_OUT_FIELDS = ("subject_count",)
 WEIGHT = re.compile(r"([0-9]+)(?:[.,]([0-9]+))?|([0-9]+)/([0-9]+)")
 # The apps store ids as 32-bit numbers.
 MAX_ID = 2**31 - 1
+# A template's optional country, as an ISO 3166 code like "DE". Without one, a
+# template is Swiss; the Android app before 2.3.0 shows only Swiss templates.
+COUNTRY = re.compile(r"[A-Z]{2}")
 
 
 def weight_is_usable(weight):
@@ -95,6 +98,8 @@ def check_template(path, data, report):
             problems.append(f"{field} must be text")
     if isinstance(data.get("school"), str) and not data["school"].strip():
         problems.append("school must not be empty")
+    if "country" in data and not (isinstance(data["country"], str) and COUNTRY.fullmatch(data["country"])):
+        problems.append(f"country must be a two-letter code like \"DE\", not {data['country']!r}")
     subjects = data.get("subjects")
     if not isinstance(subjects, list):
         problems.append("subjects must be a list")

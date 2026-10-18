@@ -27,6 +27,7 @@ A template file has these fields:
 | `name` | Shown under the school name in the app's list |
 | `description` | Shown on the template's page; can be empty |
 | `school` | The school name, the way students search for it |
+| `country` | Only for a school outside Switzerland: its country's two-letter code, such as `DE`. The Android app before 2.3.0 doesn't show these templates |
 | `subject_count` | The number of subjects |
 | `subjects` | The subjects, each with a `name`, a `weight` (more than 0, such as `1`, `0.5` or `1/2`) and `counted` (`true` or `false`) |
 

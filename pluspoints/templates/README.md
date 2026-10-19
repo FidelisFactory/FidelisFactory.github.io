@@ -18,7 +18,8 @@ if the school has no folder yet, create one. The school's name as students know 
 file's `school` field: names of folders and files never reach the apps. It is recommended to copy an
 existing template and adjust the values in the fields.
 
-Give the template the next free `id` (the highest `id` of all templates plus one). The apps tell
+Give the template the next free `id` below 10000 (the highest such `id` plus one); the ids from
+10000 on belong to the proposals that the daily import adds (see below). The apps tell
 templates apart by their `id`, so it must be unique and must never be reused for a different
 template. Ids 5878 to 5999 are reserved for the German templates of the Android app's upcoming
 2.3.0 version.
@@ -49,6 +50,56 @@ python3 scripts/build_templates_bundle.py
 It reports errors (for example a duplicate `id`, a file not named after its `id`, or a weight the
 apps can't calculate with), which
 must be fixed, and warnings, which don't block publishing.
+
+## How proposals become templates
+
+Students propose templates from the Android app, and each proposal arrives as an issue with the
+`template-proposal` label. Once a day, the
+[Import proposals workflow](../../.github/workflows/import-proposals.yml) turns them into templates
+without anyone reviewing them first. `scripts/import_proposals.py` holds the rules:
+
+- The school, the subjects and their weights stay as the student typed them. Only spaces are
+  tidied up, invisible characters are removed, a weight like `1.0` is written `1`, and subjects
+  without a name are left out.
+- The template's `name` is the school year the student typed, or their own name for the semester
+  if the year is empty. Its `description` is that semester name, unless it only repeats the name or
+  the school.
+- Its `id` is 10000 plus the number of its issue, and its file is named after it, like
+  `10041.json`.
+- It goes into the school's folder, named by the rule above (`Sek leonard` goes into
+  `sek-leonard`), or into the folder that holds most templates for a school with that folder name.
+  Otherwise the import creates that folder.
+
+A proposal is not added, and a comment on its issue says why, if:
+
+- it can't be read, has no subject with a name, has more than 40 subjects, or has text longer than
+  100 characters (80 for a subject);
+- a weight isn't one the apps can use;
+- an existing template has the same school and the same subjects, in the same order;
+- its school name looks like a test entry ("test", "asdf"), or it contains a word from
+  `scripts/proposal_blocked_words.txt` (insults);
+- it contains a link, an email address, a phone number or HTML.
+
+The token that the app files proposals with ships inside the app, so anyone could file one, and set
+any label on it. Approvals therefore live in this repository: if the last two checks are wrong
+about a proposal, add the line that the comment on its issue shows to
+`scripts/approved_proposals.txt` on `main` and reopen the issue. The next run adds it without those
+two checks, unless the issue was edited since.
+
+The import closes added proposals with the `template-added` label and the others with
+`template-rejected`. A run adds at most 20 proposals and answers at most 50; the rest wait for the
+next day. The proposals up to #38 were added by hand, so it leaves those alone.
+
+Each run that adds templates is one commit on `main` ("Add the templates proposed in #41, #42"). To
+undo one, revert its commit: the next published file leaves those templates out, and the apps drop
+them within a day. To keep a proposal out of the import, remove its `template-proposal` label. To
+stop the import, disable the workflow in the Actions tab. A manual run of the workflow is a dry run
+unless you uncheck that: its summary shows what it would add. GitHub also disables the schedule
+after 60 days without any activity in the repository; it can be enabled again in the same place.
+
+The import reads the JSON block of the issue (`school`, `description` with the year, `subjects`)
+and the line with the student's own name for the semester, so an app that files proposals must
+keep that format.
 
 ## How the apps get the templates
 

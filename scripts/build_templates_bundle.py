@@ -137,7 +137,14 @@ def check_template(path, data, report):
         report.warning(path, f"{len(subjects) - len(named)} subject(s) without a name are left out")
 
     template = {"id": template_id}
-    template.update({field: data[field].strip() for field in TEXT_FIELDS})
+    for field in TEXT_FIELDS:
+        text = data[field]
+        # A line break written out as the two characters "\n" (some old
+        # templates had them), which the apps would show as such.
+        if "\\n" in text:
+            report.warning(path, f"{field} contains \"\\n\" written out; it's published as a line break")
+            text = text.replace("\\n", "\n")
+        template[field] = text.strip()
     template["subjects"] = named
     for field, value in data.items():
         if field not in template and field not in LEFT_OUT_FIELDS:
